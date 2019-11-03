@@ -3,7 +3,9 @@ package com.jannahsoftware.moviedb;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.PagerSnapHelper;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.SnapHelper;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -35,6 +37,7 @@ public class MainActivity extends AppCompatActivity
     public static RecyclerView.Adapter adapter;
     public static List<Movie> movieList;
     private static LinearLayoutManager linearLayoutManager;
+    private SnapHelper snapHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -68,6 +71,7 @@ public class MainActivity extends AppCompatActivity
 
     private void SetRecyclerVars()
     {
+        snapHelper = new PagerSnapHelper();
         recyclerView = findViewById(R.id.pop_movies_rec);
         movieList = new ArrayList<>();
         adapter = new MovieAdapter(movieList, this);
@@ -79,6 +83,8 @@ public class MainActivity extends AppCompatActivity
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setAdapter(adapter);
+
+        snapHelper.attachToRecyclerView(recyclerView);
     }
 
     private void BottomNav()
