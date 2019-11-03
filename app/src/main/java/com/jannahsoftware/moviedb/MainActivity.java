@@ -1,5 +1,6 @@
 package com.jannahsoftware.moviedb;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -7,8 +8,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 
 import com.android.volley.toolbox.Volley;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.jannahsoftware.Adapters.MovieAdapter;
 import com.jannahsoftware.Application.App;
 import com.jannahsoftware.Constants.Conts;
@@ -26,6 +29,7 @@ public class MainActivity extends AppCompatActivity
     private TVSeriesDBJSON tvSeriesDBJSON = new TVSeriesDBJSON();
     public static String myKey;
 
+
     //adapter vars
     private static RecyclerView recyclerView;
     public static RecyclerView.Adapter adapter;
@@ -39,6 +43,7 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
 
         SetRecyclerVars();
+        BottomNav();
 
         myKey = getResources().getString(R.string.apikey);
         Log.d("APIKEY", "onCreate: " + App.key);
@@ -74,6 +79,18 @@ public class MainActivity extends AppCompatActivity
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setAdapter(adapter);
+    }
+
+    private void BottomNav()
+    {
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
+
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+                return false;
+            }
+        });
     }
 }
 
