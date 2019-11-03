@@ -1,7 +1,6 @@
 package com.jannahsoftware.json;
 
 import android.util.Log;
-
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -9,6 +8,8 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.jannahsoftware.Constants.Conts;
 import com.jannahsoftware.Model.IMovies;
+import com.jannahsoftware.Model.Movie;
+import com.jannahsoftware.moviedb.MainActivity;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -34,6 +35,12 @@ public class MovieDBJSON implements IMovies
                     for(int i = 0; i < array.length(); i++)
                     {
                         JSONObject jsonObject = array.getJSONObject(i);
+
+                        Movie getmovies = new Movie();
+                        getmovies.setTitle(jsonObject.getString("title"));
+
+                        MainActivity.movieList.add(getmovies);
+
                         Log.d("ARRAY", "onResponse: " + jsonObject.getString("title"));
                     }
 
@@ -41,6 +48,8 @@ public class MovieDBJSON implements IMovies
                 {
                     e.printStackTrace();
                 }
+
+                MainActivity.adapter.notifyDataSetChanged();
             }
         }, new Response.ErrorListener() {
             @Override

@@ -1,16 +1,23 @@
 package com.jannahsoftware.moviedb;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
-import android.app.Application;
+import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 
 import com.android.volley.toolbox.Volley;
+import com.jannahsoftware.Adapters.MovieAdapter;
 import com.jannahsoftware.Application.App;
 import com.jannahsoftware.Constants.Conts;
+import com.jannahsoftware.Model.Movie;
 import com.jannahsoftware.json.MovieDBJSON;
 import com.jannahsoftware.json.TVSeriesDBJSON;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity
 {
@@ -19,23 +26,30 @@ public class MainActivity extends AppCompatActivity
     private TVSeriesDBJSON tvSeriesDBJSON = new TVSeriesDBJSON();
     public static String myKey;
 
+    //adapter vars
+    private static RecyclerView recyclerView;
+    public static RecyclerView.Adapter adapter;
+    public static List<Movie> movieList;
+    private static LinearLayoutManager linearLayoutManager;
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        SetRecyclerVars();
 
         myKey = getResources().getString(R.string.apikey);
         Log.d("APIKEY", "onCreate: " + App.key);
         Conts.requestQueue = Volley.newRequestQueue(this);
 
-       // movieDBJSON.GetAllPopularMovies();
+        movieDBJSON.GetAllPopularMovies();
         //movieDBJSON.GetUpcomingMovies();
         //movieDBJSON.GetTopRatedMovies();
         //movieDBJSON.GetNowPlayingMovies();
         //movieDBJSON.GetLatestMovies();
-        movieDBJSON.SearchMovies();
+        //movieDBJSON.SearchMovies();
 
 
         //tvSeriesDBJSON.GetAllPopularTVSeries();
@@ -45,6 +59,54 @@ public class MainActivity extends AppCompatActivity
         //tvSeriesDBJSON.GetLatestTVSeries();
         //tvSeriesDBJSON.SearchTVSeries();
 
+    }
 
+    private void SetRecyclerVars()
+    {
+        recyclerView = findViewById(R.id.pop_movies_rec);
+        movieList = new ArrayList<>();
+        adapter = new MovieAdapter(movieList, this);
+
+        linearLayoutManager = new LinearLayoutManager(this);
+        linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
+        linearLayoutManager.getOrientation();
+
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(linearLayoutManager);
+        recyclerView.setAdapter(adapter);
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

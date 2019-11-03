@@ -24,7 +24,7 @@ public class TVSeriesDBJSON implements ITVSeries
     @Override
     public void GetAllPopularTVSeries()
     {
-        StringRequest getallmovies = new StringRequest(Request.Method.GET, Conts.GET_ALL_POPULAR_TVSERVIES, new Response.Listener<String>() {
+        StringRequest getall_tvseries = new StringRequest(Request.Method.GET, Conts.GET_ALL_POPULAR_TVSERVIES, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
 
@@ -50,13 +50,13 @@ public class TVSeriesDBJSON implements ITVSeries
                 error.printStackTrace();
             }
         });
-        Conts.requestQueue.add(getallmovies);
+        Conts.requestQueue.add(getall_tvseries);
     }
 
     @Override
     public void GetAiringTodayTVSeries()
     {
-        StringRequest getallmovies = new StringRequest(Request.Method.GET, Conts.GET_ALL_TV_AIRING_TODAY_TVSERVIES, new Response.Listener<String>() {
+        StringRequest getall_airing_tvseries = new StringRequest(Request.Method.GET, Conts.GET_ALL_TV_AIRING_TODAY_TVSERVIES, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
 
@@ -82,13 +82,13 @@ public class TVSeriesDBJSON implements ITVSeries
                 error.printStackTrace();
             }
         });
-        Conts.requestQueue.add(getallmovies);
+        Conts.requestQueue.add(getall_airing_tvseries);
     }
 
     @Override
     public void GetTopRatedTVSeries()
     {
-        StringRequest getallmovies = new StringRequest(Request.Method.GET, Conts.GET_ALL_TOP_RATED_TVSERVIES, new Response.Listener<String>() {
+        StringRequest getall_toprated_tvseries = new StringRequest(Request.Method.GET, Conts.GET_ALL_TOP_RATED_TVSERVIES, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
 
@@ -114,13 +114,13 @@ public class TVSeriesDBJSON implements ITVSeries
                 error.printStackTrace();
             }
         });
-        Conts.requestQueue.add(getallmovies);
+        Conts.requestQueue.add(getall_toprated_tvseries);
     }
 
     @Override
     public void GetNowPlayingTVSeries()
     {
-        StringRequest getallmovies = new StringRequest(Request.Method.GET, Conts.GET_NOW_PLAYING_TVSERVIES, new Response.Listener<String>() {
+        StringRequest getall_now_playing_tvseries = new StringRequest(Request.Method.GET, Conts.GET_NOW_PLAYING_TVSERVIES, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
 
@@ -146,7 +146,7 @@ public class TVSeriesDBJSON implements ITVSeries
                 error.printStackTrace();
             }
         });
-        Conts.requestQueue.add(getallmovies);
+        Conts.requestQueue.add(getall_now_playing_tvseries);
     }
 
     @Override
@@ -178,7 +178,7 @@ public class TVSeriesDBJSON implements ITVSeries
     @Override
     public void SearchTVSeries()
     {
-        StringRequest getallmovies = new StringRequest(Request.Method.GET, Conts.SEARCH_TVSERIES, new Response.Listener<String>() {
+        StringRequest getsearch_tvseries = new StringRequest(Request.Method.GET, Conts.SEARCH_TVSERIES, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
 
@@ -204,6 +204,6 @@ public class TVSeriesDBJSON implements ITVSeries
                 error.printStackTrace();
             }
         });
-        Conts.requestQueue.add(getallmovies);
+        Conts.requestQueue.add(getsearch_tvseries);
     }
 }
