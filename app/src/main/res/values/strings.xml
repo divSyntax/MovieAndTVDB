@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">MovieDB</string>
+    <string name="apikey" type="String">bcefb0796976aa0ffdfe18e20fc3690e</string>
+
+</resources>
