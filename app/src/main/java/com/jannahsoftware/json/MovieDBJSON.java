@@ -38,10 +38,13 @@ public class MovieDBJSON implements IMovies
 
                         Movie getmovies = new Movie();
                         getmovies.setTitle(jsonObject.getString("title"));
+                        getmovies.setPoster_path(jsonObject.getString("poster_path"));
+                        getmovies.setBackdrop_path(jsonObject.getString("backdrop_path"));
 
                         MainActivity.movieList.add(getmovies);
 
                         Log.d("ARRAY", "onResponse: " + jsonObject.getString("title"));
+                        Log.d("ARRAY", "onResponse: " + jsonObject.getString("poster_path"));
                     }
 
                 }catch (Exception e)

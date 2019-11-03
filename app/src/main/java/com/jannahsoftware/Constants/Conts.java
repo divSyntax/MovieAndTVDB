@@ -18,6 +18,10 @@ public class Conts extends Application
     public static String GET_LATEST_MOVIES = "https://api.themoviedb.org/3/movie/latest?api_key="+ MainActivity.myKey +"&language=en-US";
     public  static String SEARCH_MOVIES = "https://api.themoviedb.org/3/search/movie?api_key="+ MainActivity.myKey +"&language=en-US&query=Harry&page=1&include_adult=false";
 
+    //Movie URL images
+    public static String GET_MOVIE_IMAGES = "https://image.tmdb.org/t/p/w500/";
+    public static String GET_MOVIE_BACKDROP = "https://image.tmdb.org/t/p/w780/";
+
 
     //TV SERIES URL
     public static String GET_ALL_POPULAR_TVSERVIES = "https://api.themoviedb.org/3/tv/popular?api_key="+ MainActivity.myKey +"&language=en-US&page=1";
