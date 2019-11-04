@@ -11,7 +11,8 @@
         android:roundIcon="@drawable/movie_icon"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MovieOptions"></activity>
+        <activity android:name=".SearchMovies"></activity>
+        <activity android:name=".MovieOptions" />
         <activity android:name=".MainActivity" />
         <activity android:name="com.jannahsoftware.Gifs.SplashScreen">
             <intent-filter>

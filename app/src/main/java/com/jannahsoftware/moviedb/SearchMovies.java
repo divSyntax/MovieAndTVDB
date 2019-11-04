@@ -6,21 +6,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class MovieOptions extends AppCompatActivity
-{
-    private ImageView poster;
+public class SearchMovies extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_movie_options);
-        poster = findViewById(R.id.random_poster);
-        poster.setImageResource(R.drawable.black_panther);
+        setContentView(R.layout.activity_search_movies);
 
         BottomNav();
     }
@@ -36,15 +30,15 @@ public class MovieOptions extends AppCompatActivity
                 switch (menuItem.getItemId())
                 {
                     case R.id.home:
-                        startActivity(new Intent(MovieOptions.this, MainActivity.class));
+                        startActivity(new Intent(SearchMovies.this, MainActivity.class));
                         break;
                     case R.id.movies:
-                        startActivity(new Intent(MovieOptions.this, MovieOptions.class));
+                        startActivity(new Intent(SearchMovies.this, MovieOptions.class));
                         break;
                     case R.id.tvseries:
                         break;
                     case R.id.search:
-                        startActivity(new Intent(MovieOptions.this, SearchMovies.class));
+                        startActivity(new Intent(SearchMovies.this, SearchMovies.class));
                         break;
                     default:
                         //Toast.makeText(MovieOptions.this, "", Toast.LENGTH_SHORT).show();

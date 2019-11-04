@@ -106,8 +106,11 @@ public class MainActivity extends AppCompatActivity
                         break;
                     case R.id.tvseries:
                         break;
+                    case R.id.search:
+                        startActivity(new Intent(MainActivity.this, SearchMovies.class));
+                        break;
                      default:
-                         Toast.makeText(MainActivity.this, "", Toast.LENGTH_SHORT).show();
+                         //Toast.makeText(MainActivity.this, "", Toast.LENGTH_SHORT).show();
                          break;
                 }
                 return false;
