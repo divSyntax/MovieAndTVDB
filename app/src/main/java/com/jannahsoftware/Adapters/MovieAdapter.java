@@ -1,8 +1,11 @@
 package com.jannahsoftware.Adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
+import android.os.Bundle;
+import android.telecom.Call;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +19,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.android.volley.toolbox.ImageRequest;
 import com.jannahsoftware.Constants.Conts;
 import com.jannahsoftware.Model.Movie;
+import com.jannahsoftware.moviedb.MovieDetails;
 import com.jannahsoftware.moviedb.R;
 import com.squareup.picasso.Picasso;
 
@@ -44,14 +48,15 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewAdapter>
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MovieAdapter.ViewAdapter holder, int position)
+    public void onBindViewHolder(@NonNull final MovieAdapter.ViewAdapter holder, int position)
     {
-        Movie movies = movieList.get(position);
+        final Movie movies = movieList.get(position);
 
         String poster = Conts.GET_MOVIE_IMAGES + movies.getPoster_path();
-        String backdropimage = Conts.GET_MOVIE_BACKDROP + movies.getPoster_path();
+        final String backdropimage = Conts.GET_MOVIE_BACKDROP + movies.getPoster_path();
 
         holder.title.setText(movies.getTitle());
+        holder.overviewtxt.setText(movies.getOverview());
 
         if(holder.posterImage != null && holder.backdrop != null)
         {
@@ -61,6 +66,24 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewAdapter>
         {
             Picasso.get().load(movies.getPoster_path()).placeholder(R.drawable.ic_launcher_background);
         }
+
+        holder.posterImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent i = new Intent(context,MovieDetails.class);
+                holder.title.setText(movies.getTitle());
+                holder.overviewtxt.setText(movies.getOverview());
+
+                String title = movies.getTitle();
+                String overview = movies.getOverview();
+
+                i.putExtra("title",title);
+                i.putExtra("overview", overview);
+
+                context.startActivity(i);
+            }
+        });
     }
 
     @Override
@@ -71,7 +94,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewAdapter>
 
     public class ViewAdapter extends RecyclerView.ViewHolder
     {
-        public TextView title;
+        public TextView title, overviewtxt;
         public ImageView posterImage, backdrop;
 
         public ViewAdapter(@NonNull View itemView, Context ctx)
@@ -82,6 +105,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewAdapter>
             title = itemView.findViewById(R.id.movie_name);
             posterImage = itemView.findViewById(R.id.poster_image);
             backdrop = itemView.findViewById(R.id.backdrop_image);
+            overviewtxt = itemView.findViewById(R.id.overview);
         }
     }
 }
