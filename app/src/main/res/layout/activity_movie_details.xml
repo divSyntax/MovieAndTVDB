@@ -24,8 +24,9 @@
 
             <ImageView
                 android:id="@+id/details_backdrop"
-                android:layout_width="369dp"
-                android:layout_height="224dp"
+                android:layout_width="384dp"
+                android:layout_height="250dp"
+                android:scaleType="centerInside"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -33,10 +34,10 @@
 
             <ImageView
                 android:id="@+id/deatails_poster"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="12dp"
-                android:layout_marginTop="72dp"
+                android:layout_width="114dp"
+                android:layout_height="84dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="152dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:srcCompat="@tools:sample/avatars[10]" />

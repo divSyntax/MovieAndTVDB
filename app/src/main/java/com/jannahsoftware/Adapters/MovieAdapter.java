@@ -48,11 +48,11 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewAdapter>
     }
 
     @Override
-    public void onBindViewHolder(@NonNull final MovieAdapter.ViewAdapter holder, int position)
+    public void onBindViewHolder(@NonNull final MovieAdapter.ViewAdapter holder, final int position)
     {
         final Movie movies = movieList.get(position);
 
-        String poster = Conts.GET_MOVIE_IMAGES + movies.getPoster_path();
+        final String poster = Conts.GET_MOVIE_IMAGES + movies.getPoster_path();
         final String backdropimage = Conts.GET_MOVIE_BACKDROP + movies.getPoster_path();
 
         holder.title.setText(movies.getTitle());
@@ -75,11 +75,17 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewAdapter>
                 holder.title.setText(movies.getTitle());
                 holder.overviewtxt.setText(movies.getOverview());
 
+                Picasso.get().load(poster).into(holder.posterImage);
+                Picasso.get().load(backdropimage).into(holder.backdrop);
+
                 String title = movies.getTitle();
                 String overview = movies.getOverview();
 
                 i.putExtra("title",title);
                 i.putExtra("overview", overview);
+
+                i.putExtra("poster",poster);
+                i.putExtra("backdrop", backdropimage);
 
                 context.startActivity(i);
             }

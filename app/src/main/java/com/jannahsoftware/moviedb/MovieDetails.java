@@ -6,14 +6,17 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.squareup.picasso.Picasso;
 
 public class MovieDetails extends AppCompatActivity {
 
 
     private TextView titleTxt, overviewTxt;
+    private ImageView posterImage, backdropImage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,9 +26,18 @@ public class MovieDetails extends AppCompatActivity {
         titleTxt = findViewById(R.id.details_title);
         overviewTxt = findViewById(R.id.details_overview);
 
+        posterImage = findViewById(R.id.deatails_poster);
+        backdropImage = findViewById(R.id.details_backdrop);
+
         Intent i = getIntent();
         String passedTitle = i.getStringExtra("title");
         String passedOverview = i.getStringExtra("overview");
+
+        String passedPoster = i.getStringExtra("poster");
+        String passedbackdrop = i.getStringExtra("backdrop");
+
+        Picasso.get().load(passedPoster).into(posterImage);
+        Picasso.get().load(passedbackdrop).into(backdropImage);
 
         titleTxt.setText(passedTitle);
         overviewTxt.setText(passedOverview);
