@@ -19,4 +19,11 @@
         >
     </item>
 
+    <item android:id="@+id/search"
+        android:title="Search"
+        android:icon="@drawable/search"
+        >
+
+    </item>
+
 </menu>

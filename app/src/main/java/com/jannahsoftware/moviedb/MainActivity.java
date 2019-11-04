@@ -12,6 +12,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.android.volley.toolbox.Volley;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -50,7 +51,6 @@ public class MainActivity extends AppCompatActivity
         BottomNav();
 
         myKey = getResources().getString(R.string.apikey);
-        Log.d("APIKEY", "onCreate: " + App.key);
         Conts.requestQueue = Volley.newRequestQueue(this);
 
         movieDBJSON.GetAllPopularMovies();
@@ -102,12 +102,14 @@ public class MainActivity extends AppCompatActivity
                         startActivity(new Intent(MainActivity.this, MainActivity.class));
                         break;
                     case R.id.movies:
+                        startActivity(new Intent(MainActivity.this, MovieOptions.class));
                         break;
                     case R.id.tvseries:
                         break;
+                     default:
+                         Toast.makeText(MainActivity.this, "", Toast.LENGTH_SHORT).show();
+                         break;
                 }
-
-
                 return false;
             }
         });

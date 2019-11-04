@@ -26,7 +26,7 @@
         android:layout_marginTop="340dp"
         android:layout_marginEnd="16dp"
         android:fontFamily="cursive"
-        android:text="Show Time...."
+        android:text="It's show time...."
         android:textAlignment="center"
         android:textAllCaps="false"
         android:textColor="@android:color/background_light"
