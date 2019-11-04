@@ -16,7 +16,7 @@ public class Movie
     private String original_title;
     private int vote_average;
     private String overview;
-    private Date release_date;
+    private String release_date;
 
     public double getPopularity() {
         return popularity;
@@ -114,11 +114,11 @@ public class Movie
         this.overview = overview;
     }
 
-    public Date getRelease_date() {
+    public String getRelease_date() {
         return release_date;
     }
 
-    public void setRelease_date(Date release_date) {
+    public void setRelease_date(String release_date) {
         this.release_date = release_date;
     }
 
@@ -127,7 +127,7 @@ public class Movie
 
     }
 
-    public Movie(double popularity, long vote_count, boolean video, String poster_path, long id, boolean adult, String backdrop_path, String origial_lang, String title, String original_title, int vote_average, String overview, Date release_date) {
+    public Movie(double popularity, long vote_count, boolean video, String poster_path, long id, boolean adult, String backdrop_path, String origial_lang, String title, String original_title, int vote_average, String overview, String release_date) {
         this.popularity = popularity;
         this.vote_count = vote_count;
         this.video = video;

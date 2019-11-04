@@ -37,16 +37,25 @@ public class MovieDBJSON implements IMovies
                         JSONObject jsonObject = array.getJSONObject(i);
 
                         Movie getmovies = new Movie();
+
                         getmovies.setTitle(jsonObject.getString("title"));
                         getmovies.setPoster_path(jsonObject.getString("poster_path"));
                         getmovies.setBackdrop_path(jsonObject.getString("backdrop_path"));
                         getmovies.setOverview(jsonObject.getString("overview"));
+
+                        getmovies.setRelease_date(jsonObject.getString("release_date"));
+                        getmovies.setVote_average(jsonObject.getInt("vote_average"));
+                        getmovies.setPopularity(jsonObject.getDouble("popularity"));
 
                         MainActivity.movieList.add(getmovies);
 
                         Log.d("ARRAY", "onResponse: " + jsonObject.getString("title"));
                         Log.d("ARRAY", "onResponse: " + jsonObject.getString("poster_path"));
                         Log.d("Overview", "onResponse: " + jsonObject.getString("overview"));
+
+                        Log.d("ARRAY", "onResponse: " + jsonObject.getString("release_date"));
+                        Log.d("ARRAY", "onResponse: " + jsonObject.getInt("vote_average"));
+                        Log.d("Overview", "onResponse: " + jsonObject.getDouble("popularity"));
                     }
 
                 }catch (Exception e)

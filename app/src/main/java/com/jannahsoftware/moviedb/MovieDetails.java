@@ -15,7 +15,7 @@ import com.squareup.picasso.Picasso;
 public class MovieDetails extends AppCompatActivity {
 
 
-    private TextView titleTxt, overviewTxt;
+    private TextView titleTxt, overviewTxt, releaseTxt, averageTxt, popularityTxt;
     private ImageView posterImage, backdropImage;
 
     @Override
@@ -29,6 +29,10 @@ public class MovieDetails extends AppCompatActivity {
         posterImage = findViewById(R.id.deatails_poster);
         backdropImage = findViewById(R.id.details_backdrop);
 
+        releaseTxt = findViewById(R.id.detail_releaseDate);
+        averageTxt = findViewById(R.id.detail_vote_average);
+        popularityTxt = findViewById(R.id.detail_popularity);
+
         Intent i = getIntent();
         String passedTitle = i.getStringExtra("title");
         String passedOverview = i.getStringExtra("overview");
@@ -39,8 +43,16 @@ public class MovieDetails extends AppCompatActivity {
         Picasso.get().load(passedPoster).into(posterImage);
         Picasso.get().load(passedbackdrop).into(backdropImage);
 
+        String passedreleased = i.getStringExtra("releasedate");
+        int passedvoteave = i.getIntExtra("voteaverage", 0);
+        double passedpopularity = i.getDoubleExtra("popularity",0);
+
         titleTxt.setText(passedTitle);
         overviewTxt.setText(passedOverview);
+
+        releaseTxt.setText(passedreleased);
+        averageTxt.setText(String.valueOf(passedvoteave));
+        popularityTxt.setText(String.valueOf(passedpopularity));
 
         BottomNav();
     }

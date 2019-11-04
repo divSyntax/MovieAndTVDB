@@ -57,6 +57,9 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewAdapter>
 
         holder.title.setText(movies.getTitle());
         holder.overviewtxt.setText(movies.getOverview());
+        holder.releasedate.setText(movies.getRelease_date());
+        holder.vote_average.setText(String.valueOf(movies.getVote_average()));
+        holder.popul_arity.setText(String.valueOf(movies.getPopularity()));
 
         if(holder.posterImage != null && holder.backdrop != null)
         {
@@ -80,12 +83,21 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewAdapter>
 
                 String title = movies.getTitle();
                 String overview = movies.getOverview();
+                String releasedate = movies.getRelease_date();
+                int voteaverage = movies.getVote_average();
+                double popularity = movies.getPopularity();
 
                 i.putExtra("title",title);
                 i.putExtra("overview", overview);
 
                 i.putExtra("poster",poster);
                 i.putExtra("backdrop", backdropimage);
+
+                i.putExtra("releasedate", releasedate);
+                i.putExtra("voteaverage",voteaverage);
+                i.putExtra("popularity",popularity);
+
+
 
                 context.startActivity(i);
             }
@@ -100,7 +112,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewAdapter>
 
     public class ViewAdapter extends RecyclerView.ViewHolder
     {
-        public TextView title, overviewtxt;
+        public TextView title, overviewtxt, releasedate, vote_average, popul_arity;
         public ImageView posterImage, backdrop;
 
         public ViewAdapter(@NonNull View itemView, Context ctx)
@@ -112,6 +124,9 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewAdapter>
             posterImage = itemView.findViewById(R.id.poster_image);
             backdrop = itemView.findViewById(R.id.backdrop_image);
             overviewtxt = itemView.findViewById(R.id.overview);
+            releasedate = itemView.findViewById(R.id.release_date);
+            vote_average = itemView.findViewById(R.id.vote_avrage);
+            popul_arity = itemView.findViewById(R.id.pop_ularity);
         }
     }
 }
