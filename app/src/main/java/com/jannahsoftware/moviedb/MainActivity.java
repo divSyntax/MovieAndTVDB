@@ -9,6 +9,8 @@ import androidx.recyclerview.widget.SnapHelper;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
@@ -20,6 +22,7 @@ import com.jannahsoftware.Adapters.MovieAdapter;
 import com.jannahsoftware.Application.App;
 import com.jannahsoftware.Constants.Conts;
 import com.jannahsoftware.Model.Movie;
+import com.jannahsoftware.NetWork.BroadCastReciever;
 import com.jannahsoftware.json.MovieDBJSON;
 import com.jannahsoftware.json.TVSeriesDBJSON;
 
@@ -32,6 +35,7 @@ public class MainActivity extends AppCompatActivity
     private MovieDBJSON movieDBJSON = new MovieDBJSON();
     private TVSeriesDBJSON tvSeriesDBJSON = new TVSeriesDBJSON();
     public static String myKey;
+    private BroadCastReciever broadCastReciever;
 
 
     //adapter vars
@@ -47,6 +51,9 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        broadCastReciever = new BroadCastReciever();
+
+        BroadCastIntent();
         SetRecyclerVars();
         BottomNav();
 
@@ -68,6 +75,12 @@ public class MainActivity extends AppCompatActivity
         //tvSeriesDBJSON.GetLatestTVSeries();
         //tvSeriesDBJSON.SearchTVSeries();
 
+    }
+
+    private void BroadCastIntent()
+    {
+        broadCastReciever = new BroadCastReciever();
+        registerReceiver(broadCastReciever, new IntentFilter(ConnectivityManager.EXTRA_NO_CONNECTIVITY));
     }
 
     private void SetRecyclerVars()
@@ -116,6 +129,12 @@ public class MainActivity extends AppCompatActivity
                 return false;
             }
         });
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        unregisterReceiver(broadCastReciever);
     }
 }
 
