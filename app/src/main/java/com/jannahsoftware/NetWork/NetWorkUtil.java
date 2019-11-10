@@ -34,7 +34,7 @@ public class NetWorkUtil
             }
         }else
         {
-            status = "No connection.";
+            status = "No connections.";
             return status;
         }
 

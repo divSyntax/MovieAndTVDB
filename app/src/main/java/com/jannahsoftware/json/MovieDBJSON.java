@@ -1,6 +1,8 @@
 package com.jannahsoftware.json;
 
 import android.util.Log;
+import android.view.View;
+
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -45,7 +47,7 @@ public class MovieDBJSON implements IMovies
 
                         getmovies.setRelease_date(jsonObject.getString("release_date"));
                         getmovies.setVote_average(jsonObject.getInt("vote_average"));
-                        getmovies.setPopularity(jsonObject.getDouble("popularity"));
+                        getmovies.setPopularity(Math.round(jsonObject.getDouble("popularity")));
 
                         MainActivity.movieList.add(getmovies);
 
@@ -55,7 +57,7 @@ public class MovieDBJSON implements IMovies
 
                         Log.d("ARRAY", "onResponse: " + jsonObject.getString("release_date"));
                         Log.d("ARRAY", "onResponse: " + jsonObject.getInt("vote_average"));
-                        Log.d("Overview", "onResponse: " + jsonObject.getDouble("popularity"));
+                        Log.d("POP", "onResponse: " + Math.round(jsonObject.getDouble("popularity")));
                     }
 
                 }catch (Exception e)

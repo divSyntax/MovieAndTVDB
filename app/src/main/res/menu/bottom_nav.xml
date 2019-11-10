@@ -2,25 +2,21 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item android:id="@+id/home"
-        android:title="Home"
         android:icon="@drawable/home"
         >
     </item>
 
     <item android:id="@+id/tvseries"
-        android:title="TV"
         android:icon="@drawable/tv"
         >
     </item>
 
     <item android:id="@+id/movies"
-        android:title="Movie"
         android:icon="@drawable/movie"
         >
     </item>
 
     <item android:id="@+id/search"
-        android:title="Search"
         android:icon="@drawable/search"
         >
 

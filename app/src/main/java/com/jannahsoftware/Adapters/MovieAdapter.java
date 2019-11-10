@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -29,6 +30,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewAdapter>
 {
     private List<Movie> movieList;
     private Context context;
+    private boolean isLoaded = false;
 
     public MovieAdapter(List<Movie> movieList, Context context) {
         this.movieList = movieList;
@@ -61,13 +63,21 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewAdapter>
         holder.vote_average.setText(String.valueOf(movies.getVote_average()));
         holder.popul_arity.setText(String.valueOf(movies.getPopularity()));
 
+        holder.progressBar.setVisibility(View.VISIBLE);
+
         if(holder.posterImage != null && holder.backdrop != null)
         {
+            isLoaded = true;
             Picasso.get().load(poster).into(holder.posterImage);
             Picasso.get().load(backdropimage).into(holder.backdrop);
         }else
         {
             Picasso.get().load(movies.getPoster_path()).placeholder(R.drawable.ic_launcher_background);
+        }
+
+        if(isLoaded == true)
+        {
+            holder.progressBar.setVisibility(View.INVISIBLE);
         }
 
         holder.posterImage.setOnClickListener(new View.OnClickListener() {
@@ -114,6 +124,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewAdapter>
     {
         public TextView title, overviewtxt, releasedate, vote_average, popul_arity;
         public ImageView posterImage, backdrop;
+        public ProgressBar progressBar;
 
         public ViewAdapter(@NonNull View itemView, Context ctx)
         {
@@ -127,6 +138,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewAdapter>
             releasedate = itemView.findViewById(R.id.release_date);
             vote_average = itemView.findViewById(R.id.vote_avrage);
             popul_arity = itemView.findViewById(R.id.pop_ularity);
+            progressBar = itemView.findViewById(R.id.bar);
         }
     }
 }

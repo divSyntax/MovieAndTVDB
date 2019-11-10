@@ -3,7 +3,7 @@
     package="com.jannahsoftware.moviedb">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:allowBackup="true"
@@ -12,7 +12,9 @@
         android:roundIcon="@drawable/movie_icon"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MovieDetails"></activity>
+        <activity android:name=".TVOptions"></activity>
+        <activity android:name="com.jannahsoftware.NetWork.NoInternet" />
+        <activity android:name=".MovieDetails" />
         <activity android:name=".SearchMovies" />
         <activity android:name=".MovieOptions" />
         <activity android:name=".MainActivity" />
@@ -26,11 +28,10 @@
 
         <receiver android:name="com.jannahsoftware.NetWork.BroadCastReciever">
             <intent-filter>
-                <action android:name="android.net.conn.CONNECTIVITY_CHANGE"/>
-                <action android:name="android.net.conn.wifi.WIFI_STATE_CHANGED"/>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+                <action android:name="android.net.conn.wifi.WIFI_STATE_CHANGED" />
             </intent-filter>
         </receiver>
-
     </application>
 
 </manifest>

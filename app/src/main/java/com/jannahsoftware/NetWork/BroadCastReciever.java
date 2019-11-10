@@ -16,8 +16,11 @@ public class BroadCastReciever extends BroadcastReceiver
         if(status.isEmpty())
         {
             status = "No internet.";
+            Toast.makeText(context, status, Toast.LENGTH_SHORT).show();
+        }else
+        {
+            status = "Internet.";
+            Toast.makeText(context, status, Toast.LENGTH_SHORT).show();
         }
-
-        Toast.makeText(context, status, Toast.LENGTH_SHORT).show();
     }
 }

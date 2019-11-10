@@ -14,6 +14,8 @@ import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.android.volley.toolbox.Volley;
@@ -31,12 +33,11 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity
 {
-
     private MovieDBJSON movieDBJSON = new MovieDBJSON();
     private TVSeriesDBJSON tvSeriesDBJSON = new TVSeriesDBJSON();
     public static String myKey;
     private BroadCastReciever broadCastReciever;
-
+    public static ProgressBar progressBar;
 
     //adapter vars
     private static RecyclerView recyclerView;
@@ -51,16 +52,17 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        broadCastReciever = new BroadCastReciever();
-
         BroadCastIntent();
         SetRecyclerVars();
         BottomNav();
 
         myKey = getResources().getString(R.string.apikey);
         Conts.requestQueue = Volley.newRequestQueue(this);
+        progressBar = findViewById(R.id.bar);
+
 
         movieDBJSON.GetAllPopularMovies();
+
         //movieDBJSON.GetUpcomingMovies();
         //movieDBJSON.GetTopRatedMovies();
         //movieDBJSON.GetNowPlayingMovies();
@@ -118,6 +120,7 @@ public class MainActivity extends AppCompatActivity
                         startActivity(new Intent(MainActivity.this, MovieOptions.class));
                         break;
                     case R.id.tvseries:
+                        startActivity(new Intent(MainActivity.this, TVOptions.class));
                         break;
                     case R.id.search:
                         startActivity(new Intent(MainActivity.this, SearchMovies.class));
@@ -134,7 +137,7 @@ public class MainActivity extends AppCompatActivity
     @Override
     protected void onPause() {
         super.onPause();
-        unregisterReceiver(broadCastReciever);
+        //unregisterReceiver(broadCastReciever);
     }
 }
 
