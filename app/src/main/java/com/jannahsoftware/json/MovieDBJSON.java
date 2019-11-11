@@ -11,7 +11,11 @@ import com.android.volley.toolbox.StringRequest;
 import com.jannahsoftware.Constants.Conts;
 import com.jannahsoftware.Model.IMovies;
 import com.jannahsoftware.Model.Movie;
+import com.jannahsoftware.moviedb.LatestMovies;
 import com.jannahsoftware.moviedb.MainActivity;
+import com.jannahsoftware.moviedb.NowPlayingMovies;
+import com.jannahsoftware.moviedb.TopRatedMovies;
+import com.jannahsoftware.moviedb.UpComingMovies;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -66,6 +70,7 @@ public class MovieDBJSON implements IMovies
                 }
 
                 MainActivity.adapter.notifyDataSetChanged();
+
             }
         }, new Response.ErrorListener() {
             @Override
@@ -91,13 +96,37 @@ public class MovieDBJSON implements IMovies
                     for(int i = 0; i < array.length(); i++)
                     {
                         JSONObject jsonObject = array.getJSONObject(i);
-                        Log.d("ONJ", "onResponse: " + jsonObject.getString("title"));
+
+                        Movie getmovies = new Movie();
+
+                        getmovies.setTitle(jsonObject.getString("title"));
+                        getmovies.setPoster_path(jsonObject.getString("poster_path"));
+                        getmovies.setBackdrop_path(jsonObject.getString("backdrop_path"));
+                        getmovies.setOverview(jsonObject.getString("overview"));
+
+                        getmovies.setRelease_date(jsonObject.getString("release_date"));
+                        getmovies.setVote_average(jsonObject.getInt("vote_average"));
+                        getmovies.setPopularity(Math.round(jsonObject.getDouble("popularity")));
+
+                        UpComingMovies.movieList.add(getmovies);
+
+                        Log.d("ARRAY", "onResponse: " + jsonObject.getString("title"));
+                        Log.d("ARRAY", "onResponse: " + jsonObject.getString("poster_path"));
+                        Log.d("Overview", "onResponse: " + jsonObject.getString("overview"));
+
+                        Log.d("ARRAY", "onResponse: " + jsonObject.getString("release_date"));
+                        Log.d("ARRAY", "onResponse: " + jsonObject.getInt("vote_average"));
+                        Log.d("POP", "onResponse: " + Math.round(jsonObject.getDouble("popularity")));
                     }
 
                 }catch (Exception e)
                 {
                     e.printStackTrace();
                 }
+
+
+                UpComingMovies.adapter.notifyDataSetChanged();
+
             }
         }, new Response.ErrorListener() {
             @Override
@@ -123,13 +152,36 @@ public class MovieDBJSON implements IMovies
                     for(int i = 0; i < array.length(); i++)
                     {
                         JSONObject jsonObject = array.getJSONObject(i);
-                        Log.d("RATED", "onResponse: " + jsonObject.getString("title"));
+
+                        Movie getmovies = new Movie();
+
+                        getmovies.setTitle(jsonObject.getString("title"));
+                        getmovies.setPoster_path(jsonObject.getString("poster_path"));
+                        getmovies.setBackdrop_path(jsonObject.getString("backdrop_path"));
+                        getmovies.setOverview(jsonObject.getString("overview"));
+
+                        getmovies.setRelease_date(jsonObject.getString("release_date"));
+                        getmovies.setVote_average(jsonObject.getInt("vote_average"));
+                        getmovies.setPopularity(Math.round(jsonObject.getDouble("popularity")));
+
+                        TopRatedMovies.movieList.add(getmovies);
+
+                        Log.d("ARRAY", "onResponse: " + jsonObject.getString("title"));
+                        Log.d("ARRAY", "onResponse: " + jsonObject.getString("poster_path"));
+                        Log.d("Overview", "onResponse: " + jsonObject.getString("overview"));
+
+                        Log.d("ARRAY", "onResponse: " + jsonObject.getString("release_date"));
+                        Log.d("ARRAY", "onResponse: " + jsonObject.getInt("vote_average"));
+                        Log.d("POP", "onResponse: " + Math.round(jsonObject.getDouble("popularity")));
                     }
 
                 }catch (Exception e)
                 {
                     e.printStackTrace();
                 }
+
+                TopRatedMovies.adapter.notifyDataSetChanged();
+
             }
         }, new Response.ErrorListener() {
             @Override
@@ -155,13 +207,36 @@ public class MovieDBJSON implements IMovies
                     for(int i = 0; i < array.length(); i++)
                     {
                         JSONObject jsonObject = array.getJSONObject(i);
-                        Log.d("PLAYING", "onResponse: " + jsonObject.getString("title"));
+
+                        Movie getmovies = new Movie();
+
+                        getmovies.setTitle(jsonObject.getString("title"));
+                        getmovies.setPoster_path(jsonObject.getString("poster_path"));
+                        getmovies.setBackdrop_path(jsonObject.getString("backdrop_path"));
+                        getmovies.setOverview(jsonObject.getString("overview"));
+
+                        getmovies.setRelease_date(jsonObject.getString("release_date"));
+                        getmovies.setVote_average(jsonObject.getInt("vote_average"));
+                        getmovies.setPopularity(Math.round(jsonObject.getDouble("popularity")));
+
+                        NowPlayingMovies.movieList.add(getmovies);
+
+                        Log.d("ARRAY", "onResponse: " + jsonObject.getString("title"));
+                        Log.d("ARRAY", "onResponse: " + jsonObject.getString("poster_path"));
+                        Log.d("Overview", "onResponse: " + jsonObject.getString("overview"));
+
+                        Log.d("ARRAY", "onResponse: " + jsonObject.getString("release_date"));
+                        Log.d("ARRAY", "onResponse: " + jsonObject.getInt("vote_average"));
+                        Log.d("POP", "onResponse: " + Math.round(jsonObject.getDouble("popularity")));
                     }
 
                 }catch (Exception e)
                 {
                     e.printStackTrace();
                 }
+
+                NowPlayingMovies.adapter.notifyDataSetChanged();
+
             }
         }, new Response.ErrorListener() {
             @Override
@@ -181,13 +256,36 @@ public class MovieDBJSON implements IMovies
 
                 try
                 {
-                    String title = response.getString("title");
-                    Log.d("LASTEST", "onResponse:  " + title);
+
+                        Movie getmovies = new Movie();
+
+                        getmovies.setTitle(response.getString("title"));
+                        getmovies.setPoster_path(response.getString("poster_path"));
+                        getmovies.setBackdrop_path(response.getString("backdrop_path"));
+                        getmovies.setOverview(response.getString("overview"));
+
+                        getmovies.setRelease_date(response.getString("release_date"));
+                        getmovies.setVote_average(response.getInt("vote_average"));
+                        getmovies.setPopularity(Math.round(response.getDouble("popularity")));
+
+                        LatestMovies.movieList.add(getmovies);
+
+                        Log.d("ARRAY", "onResponse: " + response.getString("title"));
+                        Log.d("ARRAY", "onResponse: " + response.getString("poster_path"));
+                        Log.d("Overview", "onResponse: " + response.getString("overview"));
+
+                        Log.d("ARRAY", "onResponse: " + response.getString("release_date"));
+                        Log.d("ARRAY", "onResponse: " + response.getInt("vote_average"));
+                        Log.d("POP", "onResponse: " + Math.round(response.getDouble("popularity")));
+
 
                 }catch (Exception e)
                 {
                     e.printStackTrace();
                 }
+
+                LatestMovies.adapter.notifyDataSetChanged();
+
             }
         }, new Response.ErrorListener() {
             @Override

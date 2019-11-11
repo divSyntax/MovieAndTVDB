@@ -43,6 +43,7 @@ public class MovieOptions extends AppCompatActivity
         up_comingTxt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                startActivity(new Intent(MovieOptions.this,UpComingMovies.class));
                 Toast.makeText(MovieOptions.this, "Clicked.", Toast.LENGTH_SHORT).show();
             }
         });
@@ -50,6 +51,7 @@ public class MovieOptions extends AppCompatActivity
         top_ratedTxt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                startActivity(new Intent(MovieOptions.this,TopRatedMovies.class));
                 Toast.makeText(MovieOptions.this, "Clicked.", Toast.LENGTH_SHORT).show();
             }
         });
@@ -57,6 +59,7 @@ public class MovieOptions extends AppCompatActivity
         now_playingTxt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                startActivity(new Intent(MovieOptions.this,NowPlayingMovies.class));
                 Toast.makeText(MovieOptions.this, "Clicked.", Toast.LENGTH_SHORT).show();
             }
         });
@@ -64,6 +67,7 @@ public class MovieOptions extends AppCompatActivity
         lates_moviesTxt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                startActivity(new Intent(MovieOptions.this,LatestMovies.class));
                 Toast.makeText(MovieOptions.this, "Clicked.", Toast.LENGTH_SHORT).show();
             }
         });
@@ -83,6 +87,7 @@ public class MovieOptions extends AppCompatActivity
         up_coming.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                startActivity(new Intent(MovieOptions.this,UpComingMovies.class));
                 Toast.makeText(MovieOptions.this, "Clicked.", Toast.LENGTH_SHORT).show();
             }
         });
@@ -90,6 +95,7 @@ public class MovieOptions extends AppCompatActivity
         top_rated.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                startActivity(new Intent(MovieOptions.this,TopRatedMovies.class));
                 Toast.makeText(MovieOptions.this, "Clicked.", Toast.LENGTH_SHORT).show();
             }
         });
@@ -97,6 +103,7 @@ public class MovieOptions extends AppCompatActivity
         now_playing.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                startActivity(new Intent(MovieOptions.this,NowPlayingMovies.class));
                 Toast.makeText(MovieOptions.this, "Clicked.", Toast.LENGTH_SHORT).show();
             }
         });
@@ -104,6 +111,7 @@ public class MovieOptions extends AppCompatActivity
         lates_movies.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                startActivity(new Intent(MovieOptions.this,LatestMovies.class));
                 Toast.makeText(MovieOptions.this, "Clicked.", Toast.LENGTH_SHORT).show();
             }
         });
@@ -141,6 +149,7 @@ public class MovieOptions extends AppCompatActivity
                         startActivity(new Intent(MovieOptions.this, MovieOptions.class));
                         break;
                     case R.id.tvseries:
+                        startActivity(new Intent(MovieOptions.this, TVOptions.class));
                         break;
                     case R.id.search:
                         startActivity(new Intent(MovieOptions.this, SearchMovies.class));
