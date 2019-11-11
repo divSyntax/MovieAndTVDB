@@ -47,7 +47,7 @@ public class SearchMovies extends AppCompatActivity {
     AlertDialog.Builder moviesearch;
 
     //adapter vars
-    private static RecyclerView recyclerView;
+    public static RecyclerView recyclerView;
     public static RecyclerView.Adapter adapter;
     public static List<Movie> movieList;
     private static LinearLayoutManager linearLayoutManager;
@@ -82,7 +82,7 @@ public class SearchMovies extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        popUp();
+        //popUp();
     }
 
     private void popUp()
@@ -95,6 +95,15 @@ public class SearchMovies extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 movieDBJSON.SearchMovies(taskEditText.getText().toString());
+
+                if(SearchMovies.recyclerView.getAdapter().getItemCount() == 0)
+                {
+                    Toast.makeText(SearchMovies.this, "Sorry, no movie found with that title. Please try again.", Toast.LENGTH_SHORT).show();
+                    movieList.clear();
+                }else
+                {
+                    movieList.clear();
+                }
             }
         });
         alertDialogBuilder.setView(taskEditText);

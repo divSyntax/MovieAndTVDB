@@ -2,6 +2,7 @@ package com.jannahsoftware.json;
 
 import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
@@ -337,6 +338,7 @@ public class MovieDBJSON implements IMovies
                     }
 
                     SearchMovies.adapter.notifyDataSetChanged();
+
 
                 }catch (Exception e)
                 {

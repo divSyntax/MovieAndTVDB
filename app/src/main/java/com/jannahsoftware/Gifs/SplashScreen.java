@@ -41,6 +41,7 @@ public class SplashScreen extends AppCompatActivity {
         } else {
             Toast.makeText(this, "No connection.", Toast.LENGTH_SHORT).show();
             startActivity(new Intent(SplashScreen.this, NoInternet.class));
+            finish();
             return false;
         }
     }
