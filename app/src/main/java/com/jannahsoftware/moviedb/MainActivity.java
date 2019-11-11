@@ -38,6 +38,7 @@ public class MainActivity extends AppCompatActivity
     public static String myKey;
     private BroadCastReciever broadCastReciever;
     public static ProgressBar progressBar;
+    public static String searchQuery;
 
     //adapter vars
     private static RecyclerView recyclerView;

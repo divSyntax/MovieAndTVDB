@@ -7,5 +7,5 @@ public interface IMovies
     void GetTopRatedMovies();
     void GetNowPlayingMovies();
     void GetLatestMovies();
-    void SearchMovies();
+    void SearchMovies(String query);
 }

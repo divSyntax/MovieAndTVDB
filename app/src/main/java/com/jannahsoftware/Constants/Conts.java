@@ -1,14 +1,12 @@
 package com.jannahsoftware.Constants;
-
-import android.app.Application;
-
 import com.android.volley.RequestQueue;
 import com.jannahsoftware.moviedb.MainActivity;
+import com.jannahsoftware.moviedb.SearchMovies;
 
-
-public class Conts extends Application
+public class Conts
 {
     public static RequestQueue requestQueue;
+    public static String QuerySearch;
 
     //MOVIES URL
     public static String GET_ALL_POPULAR_MOVIES = "https://api.themoviedb.org/3/movie/popular?api_key=" + MainActivity.myKey + "&language=en-US&page=1";
@@ -16,7 +14,7 @@ public class Conts extends Application
     public static String GET_ALL_TOP_RATED_MOVIES = "https://api.themoviedb.org/3/movie/top_rated?api_key="+ MainActivity.myKey +"&language=en-US&page=1";
     public static String GET_NOW_PLAYING_MOVIES = "https://api.themoviedb.org/3/movie/now_playing?api_key="+ MainActivity.myKey +"&language=en-US&page=1";
     public static String GET_LATEST_MOVIES = "https://api.themoviedb.org/3/movie/latest?api_key="+ MainActivity.myKey +"&language=en-US";
-    public  static String SEARCH_MOVIES = "https://api.themoviedb.org/3/search/movie?api_key="+ MainActivity.myKey +"&language=en-US&query=Harry&page=1&include_adult=false";
+    public  static String SEARCH_MOVIES = "https://api.themoviedb.org/3/search/movie?api_key="+ MainActivity.myKey +"&language=en-US&query=harry&page=1&include_adult=false";
 
     //Movie URL images
     public static String GET_MOVIE_IMAGES = "https://image.tmdb.org/t/p/w500/";

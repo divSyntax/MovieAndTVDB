@@ -14,6 +14,7 @@ import com.jannahsoftware.Model.Movie;
 import com.jannahsoftware.moviedb.LatestMovies;
 import com.jannahsoftware.moviedb.MainActivity;
 import com.jannahsoftware.moviedb.NowPlayingMovies;
+import com.jannahsoftware.moviedb.SearchMovies;
 import com.jannahsoftware.moviedb.TopRatedMovies;
 import com.jannahsoftware.moviedb.UpComingMovies;
 
@@ -297,9 +298,9 @@ public class MovieDBJSON implements IMovies
     }
 
     @Override
-    public void SearchMovies()
+    public void SearchMovies(String query)
     {
-        StringRequest getallmovies = new StringRequest(Request.Method.GET, Conts.SEARCH_MOVIES, new Response.Listener<String>() {
+        StringRequest getallmovies = new StringRequest(Request.Method.GET, "https://api.themoviedb.org/3/search/movie?api_key="+ MainActivity.myKey +"&language=en-US&query="+query+"&page=1&include_adult=false", new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
 
@@ -311,8 +312,31 @@ public class MovieDBJSON implements IMovies
                     for(int i = 0; i < array.length(); i++)
                     {
                         JSONObject jsonObject = array.getJSONObject(i);
-                        Log.d("PLAYING", "onResponse: " + jsonObject.getString("title"));
+
+                        Movie getmovies = new Movie();
+
+                        getmovies.setTitle(jsonObject.getString("title"));
+                        getmovies.setPoster_path(jsonObject.getString("poster_path"));
+                        getmovies.setBackdrop_path(jsonObject.getString("backdrop_path"));
+                        getmovies.setOverview(jsonObject.getString("overview"));
+
+                        getmovies.setRelease_date(jsonObject.getString("release_date"));
+                        getmovies.setVote_average(jsonObject.getInt("vote_average"));
+                        getmovies.setPopularity(Math.round(jsonObject.getDouble("popularity")));
+
+
+                        SearchMovies.movieList.add(getmovies);
+
+                        Log.d("ARRAY", "onResponse: " + jsonObject.getString("title"));
+                        Log.d("ARRAY", "onResponse: " + jsonObject.getString("poster_path"));
+                        Log.d("Overview", "onResponse: " + jsonObject.getString("overview"));
+
+                        Log.d("ARRAY", "onResponse: " + jsonObject.getString("release_date"));
+                        Log.d("ARRAY", "onResponse: " + jsonObject.getInt("vote_average"));
+                        Log.d("POP", "onResponse: " + Math.round(jsonObject.getDouble("popularity")));
                     }
+
+                    SearchMovies.adapter.notifyDataSetChanged();
 
                 }catch (Exception e)
                 {
