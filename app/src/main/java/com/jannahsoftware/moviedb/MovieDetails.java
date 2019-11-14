@@ -74,6 +74,7 @@ public class MovieDetails extends AppCompatActivity {
                         startActivity(new Intent(MovieDetails.this, MovieOptions.class));
                         break;
                     case R.id.tvseries:
+                        startActivity(new Intent(MovieDetails.this, TVOptions.class));
                         break;
                     case R.id.search:
                         startActivity(new Intent(MovieDetails.this, SearchMovies.class));
