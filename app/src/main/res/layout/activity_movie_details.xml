@@ -64,21 +64,19 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+
             <TextView
                 android:id="@+id/details_title"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_width="401dp"
+                android:layout_height="38dp"
                 android:text="@string/movieTitle"
                 android:textAlignment="center"
                 android:textColor="@color/background"
-                android:textSize="24sp"
+                android:textSize="18sp"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="1.0" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.core.widget.NestedScrollView
                 android:id="@+id/nestedScrollView"
@@ -129,6 +127,8 @@
                 android:textColor="@color/background"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/detail_popularity"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toEndOf="@+id/detail_releaseDate" />
 
             <TextView
@@ -171,6 +171,8 @@
                 android:text="Popularity"
                 android:textAlignment="center"
                 app:layout_constraintBottom_toTopOf="@+id/detail_popularity"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toEndOf="@+id/textView9" />
 
 

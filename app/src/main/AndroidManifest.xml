@@ -12,14 +12,20 @@
         android:roundIcon="@drawable/app_icon"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".LatestMovies"></activity>
+        <activity android:name=".PopularTVShows"></activity>
+        <activity
+            android:name=".SearchTVShows"
+            android:theme="@style/Theme.AppCompat.DayNight.DarkActionBar" />
+        <activity android:name=".LatestMovies" />
         <activity android:name=".NowPlayingMovies" />
         <activity android:name=".TopRatedMovies" />
         <activity android:name=".UpComingMovies" />
         <activity android:name=".TVOptions" />
         <activity android:name="com.jannahsoftware.NetWork.NoInternet" />
         <activity android:name=".MovieDetails" />
-        <activity android:name=".SearchMovies" />
+        <activity
+            android:name=".SearchMovies"
+            android:theme="@style/Theme.AppCompat.DayNight.DarkActionBar" />
         <activity android:name=".MovieOptions" />
         <activity android:name=".MainActivity" />
         <activity android:name="com.jannahsoftware.Gifs.SplashScreen">

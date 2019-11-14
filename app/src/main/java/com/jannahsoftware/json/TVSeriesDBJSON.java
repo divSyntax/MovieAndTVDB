@@ -9,6 +9,10 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.jannahsoftware.Constants.Conts;
 import com.jannahsoftware.Model.ITVSeries;
+import com.jannahsoftware.Model.Movie;
+import com.jannahsoftware.Model.TVSeries;
+import com.jannahsoftware.moviedb.MainActivity;
+import com.jannahsoftware.moviedb.PopularTVShows;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -36,8 +40,30 @@ public class TVSeriesDBJSON implements ITVSeries
                     for(int i = 0; i < array.length(); i++)
                     {
                         JSONObject jsonObject = array.getJSONObject(i);
+
+                        TVSeries tvSeries = new TVSeries();
+
+                        tvSeries.setName(jsonObject.getString("name"));
+                        tvSeries.setPoster_path(jsonObject.getString("poster_path"));
+                        tvSeries.setBackdrop_path(jsonObject.getString("backdrop_path"));
+                        tvSeries.setOverview(jsonObject.getString("overview"));
+
+                        tvSeries.setFirst_air_date(jsonObject.getString("first_air_date"));
+                        tvSeries.setVote_average(jsonObject.getInt("vote_average"));
+                        tvSeries.setPopularity(Math.round(jsonObject.getDouble("popularity")));
+
+                        PopularTVShows.tvSeriesList.add(tvSeries);
+
                         Log.d("ARRAY", "onResponse: " + jsonObject.getString("name"));
+                        Log.d("ARRAY", "onResponse: " + jsonObject.getString("poster_path"));
+                        Log.d("Overview", "onResponse: " + jsonObject.getString("overview"));
+
+                        Log.d("ARRAY", "onResponse: " + jsonObject.getString("first_air_date"));
+                        Log.d("ARRAY", "onResponse: " + jsonObject.getInt("vote_average"));
+                        Log.d("POP", "onResponse: " + Math.round(jsonObject.getDouble("popularity")));
                     }
+
+                    PopularTVShows.adapter.notifyDataSetChanged();
 
                 }catch (Exception e)
                 {

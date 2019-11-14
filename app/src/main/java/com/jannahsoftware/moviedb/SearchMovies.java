@@ -77,6 +77,8 @@ public class SearchMovies extends AppCompatActivity {
                 popUp();
             }
         });
+
+        setTitle("Search Movies");
     }
 
     @Override
@@ -146,6 +148,7 @@ public class SearchMovies extends AppCompatActivity {
                         startActivity(new Intent(SearchMovies.this, MovieOptions.class));
                         break;
                     case R.id.tvseries:
+                        startActivity(new Intent(SearchMovies.this, TVOptions.class));
                         break;
                     case R.id.search:
                         startActivity(new Intent(SearchMovies.this, SearchMovies.class));
