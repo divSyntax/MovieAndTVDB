@@ -38,7 +38,6 @@ import java.util.List;
 public class SearchMovies extends AppCompatActivity {
 
     private MovieDBJSON movieDBJSON = new MovieDBJSON();
-    private TVSeriesDBJSON tvSeriesDBJSON = new TVSeriesDBJSON();
     public static String myKey;
     private BroadCastReciever broadCastReciever;
     public static ProgressBar progressBar;
@@ -61,7 +60,7 @@ public class SearchMovies extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_movies);
 
-         moviesearch = new AlertDialog.Builder(this);
+        moviesearch = new AlertDialog.Builder(this);
         floatsearchBtn = findViewById(R.id.searchBtn);
 
         myKey = getResources().getString(R.string.apikey);
@@ -96,14 +95,12 @@ public class SearchMovies extends AppCompatActivity {
         alertDialogBuilder.setPositiveButton("Search", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
+
                 movieDBJSON.SearchMovies(taskEditText.getText().toString());
 
-                if(movieList.size() == 0)
+                if(movieList.size() == 0 && adapter.getItemCount() == 0)
                 {
                     Toast.makeText(SearchMovies.this, "Sorry, no movie found with that title. Please try again.", Toast.LENGTH_SHORT).show();
-                    movieList.clear();
-                }else
-                {
                     movieList.clear();
                 }
             }

@@ -7,5 +7,5 @@ public interface ITVSeries
     void GetTopRatedTVSeries();
     void GetNowPlayingTVSeries();
     void GetLatestTVSeries();
-    void SearchTVSeries();
+    void SearchTVSeries(String query);
 }

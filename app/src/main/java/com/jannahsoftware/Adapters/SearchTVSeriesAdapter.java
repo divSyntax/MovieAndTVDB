@@ -14,26 +14,26 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.jannahsoftware.Constants.Conts;
 import com.jannahsoftware.Model.Movie;
+import com.jannahsoftware.Model.TVSeries;
 import com.jannahsoftware.moviedb.MovieDetails;
 import com.jannahsoftware.moviedb.R;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-public class SearchMovieAdapter extends RecyclerView.Adapter<SearchMovieAdapter.ViewAdapter>
-{
-    private List<Movie> movieList;
+public class SearchTVSeriesAdapter extends RecyclerView.Adapter<SearchTVSeriesAdapter.ViewAdapter> {
+    private List<TVSeries> tvSeriesList;
     private Context context;
     private boolean isLoaded = false;
 
-    public SearchMovieAdapter(List<Movie> movieList, Context context) {
-        this.movieList = movieList;
+    public SearchTVSeriesAdapter(List<TVSeries> tvSeriesList, Context context) {
+        this.tvSeriesList = tvSeriesList;
         this.context = context;
     }
 
     @NonNull
     @Override
-    public SearchMovieAdapter.ViewAdapter onCreateViewHolder(@NonNull ViewGroup parent, int viewType)
+    public SearchTVSeriesAdapter.ViewAdapter onCreateViewHolder(@NonNull ViewGroup parent, int viewType)
     {
         context = parent.getContext();
         LayoutInflater layoutInflater = LayoutInflater.from(context);
@@ -44,27 +44,31 @@ public class SearchMovieAdapter extends RecyclerView.Adapter<SearchMovieAdapter.
     }
 
     @Override
-    public void onBindViewHolder(@NonNull final SearchMovieAdapter.ViewAdapter holder, final int position)
+    public void onBindViewHolder(@NonNull final SearchTVSeriesAdapter.ViewAdapter holder, final int position)
     {
-        final Movie movies = movieList.get(position);
+        final TVSeries tvSeries = tvSeriesList.get(position);
 
-        final String poster = Conts.GET_MOVIE_IMAGES + movies.getPoster_path();
-        final String backdropimage = Conts.GET_MOVIE_BACKDROP + movies.getPoster_path();
+        final String poster = Conts.GET_MOVIE_IMAGES + tvSeries.getPoster_path();
+        final String backdropimage = Conts.GET_MOVIE_BACKDROP + tvSeries.getPoster_path();
 
-        holder.title.setText(movies.getTitle());
-        holder.overviewtxt.setText(movies.getOverview());
-        holder.releasedate.setText(movies.getRelease_date());
-        holder.vote_average.setText(String.valueOf(movies.getVote_average()));
-        holder.popul_arity.setText(String.valueOf(movies.getPopularity()));
+        holder.title.setText(tvSeries.getName());
+        holder.overviewtxt.setText(tvSeries.getOverview());
+        holder.releasedate.setText(tvSeries.getFirst_air_date());
+        holder.vote_average.setText(String.valueOf(tvSeries.getVote_average()));
+        holder.popul_arity.setText(String.valueOf(tvSeries.getPopularity()));
 
         holder.progressBar.setVisibility(View.VISIBLE);
 
+        isLoaded = true;
+        if(isLoaded && holder.posterImage.getDrawable() == null && holder.backdrop.getDrawable() == null)
+        {
+            Picasso.get().load(tvSeries.getPoster_path()).placeholder(R.drawable.ic_launcher_background);
+            Picasso.get().load(tvSeries.getBackdrop_path()).placeholder(R.drawable.ic_launcher_background);
+        }
+
         if(holder.posterImage != null && holder.backdrop != null)
         {
-            Picasso.get().load(poster).into(holder.posterImage);
-            Picasso.get().load(backdropimage).into(holder.backdrop);
-        }else if(holder.posterImage == null && holder.backdrop == null)
-        {
+            isLoaded = true;
             Picasso.get().load(poster).into(holder.posterImage);
             Picasso.get().load(backdropimage).into(holder.backdrop);
         }
@@ -79,17 +83,17 @@ public class SearchMovieAdapter extends RecyclerView.Adapter<SearchMovieAdapter.
             public void onClick(View v) {
 
                 Intent i = new Intent(context, MovieDetails.class);
-                holder.title.setText(movies.getTitle());
-                holder.overviewtxt.setText(movies.getOverview());
+                holder.title.setText(tvSeries.getName());
+                holder.overviewtxt.setText(tvSeries.getOverview());
 
                 Picasso.get().load(poster).into(holder.posterImage);
                 Picasso.get().load(backdropimage).into(holder.backdrop);
 
-                String title = movies.getTitle();
-                String overview = movies.getOverview();
-                String releasedate = movies.getRelease_date();
-                int voteaverage = movies.getVote_average();
-                double popularity = movies.getPopularity();
+                String title = tvSeries.getName();
+                String overview = tvSeries.getOverview();
+                String releasedate = tvSeries.getFirst_air_date();
+                int voteaverage = tvSeries.getVote_average();
+                double popularity = tvSeries.getPopularity();
 
                 i.putExtra("title",title);
                 i.putExtra("overview", overview);
@@ -111,7 +115,7 @@ public class SearchMovieAdapter extends RecyclerView.Adapter<SearchMovieAdapter.
     @Override
     public int getItemCount()
     {
-        return movieList.size();
+        return tvSeriesList.size();
     }
 
     public class ViewAdapter extends RecyclerView.ViewHolder

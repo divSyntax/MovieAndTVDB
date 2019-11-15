@@ -13,6 +13,10 @@ import com.jannahsoftware.Model.Movie;
 import com.jannahsoftware.Model.TVSeries;
 import com.jannahsoftware.moviedb.MainActivity;
 import com.jannahsoftware.moviedb.PopularTVShows;
+import com.jannahsoftware.moviedb.R;
+import com.jannahsoftware.moviedb.SearchMovies;
+import com.jannahsoftware.moviedb.SearchTVShows;
+import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -202,9 +206,9 @@ public class TVSeriesDBJSON implements ITVSeries
     }
 
     @Override
-    public void SearchTVSeries()
+    public void SearchTVSeries(String query)
     {
-        StringRequest getsearch_tvseries = new StringRequest(Request.Method.GET, Conts.SEARCH_TVSERIES, new Response.Listener<String>() {
+        StringRequest getsearch_tvseries = new StringRequest(Request.Method.GET, "https://api.themoviedb.org/3/search/tv?api_key="+ MainActivity.myKey +"&language=en-US&query="+query+"&page=1", new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
 
@@ -216,8 +220,30 @@ public class TVSeriesDBJSON implements ITVSeries
                     for(int i = 0; i < array.length(); i++)
                     {
                         JSONObject jsonObject = array.getJSONObject(i);
-                        Log.d("TV", "onResponse: " + jsonObject.getString("name"));
+
+                        TVSeries tvSeries = new TVSeries();
+
+                        tvSeries.setName(jsonObject.getString("original_name"));
+                        tvSeries.setPoster_path(jsonObject.getString("poster_path"));
+                        tvSeries.setBackdrop_path(jsonObject.getString("backdrop_path"));
+                        tvSeries.setOverview(jsonObject.getString("overview"));
+
+                        tvSeries.setFirst_air_date(jsonObject.getString("first_air_date"));
+                        tvSeries.setVote_average(jsonObject.getInt("vote_average"));
+                        tvSeries.setPopularity(Math.round(jsonObject.getDouble("popularity")));
+
+                        SearchTVShows.tvSeriesList.add(tvSeries);
+
+                        Log.d("Original_name", "onResponse: " + jsonObject.getString("original_name"));
+                        Log.d("ARRAY", "onResponse: " + jsonObject.getString("poster_path"));
+                        Log.d("Overview", "onResponse: " + jsonObject.getString("overview"));
+
+                        Log.d("ARRAY", "onResponse: " + jsonObject.getString("first_air_date"));
+                        Log.d("ARRAY", "onResponse: " + jsonObject.getInt("vote_average"));
+                        Log.d("POP", "onResponse: " + Math.round(jsonObject.getDouble("popularity")));
                     }
+
+                    SearchTVShows.adapter.notifyDataSetChanged();
 
                 }catch (Exception e)
                 {
