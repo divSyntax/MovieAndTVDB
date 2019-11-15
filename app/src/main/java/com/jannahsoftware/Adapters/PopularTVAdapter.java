@@ -17,6 +17,7 @@ import com.jannahsoftware.Model.Movie;
 import com.jannahsoftware.Model.TVSeries;
 import com.jannahsoftware.moviedb.MovieDetails;
 import com.jannahsoftware.moviedb.R;
+import com.jannahsoftware.moviedb.TVSeriesDetails;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -78,7 +79,7 @@ public class PopularTVAdapter extends RecyclerView.Adapter<PopularTVAdapter.View
             @Override
             public void onClick(View v) {
 
-                Intent i = new Intent(context, MovieDetails.class);
+                Intent i = new Intent(context, TVSeriesDetails.class);
                 holder.title.setText(tvSeries.getName());
                 holder.overviewtxt.setText(tvSeries.getOverview());
 

@@ -3,23 +3,32 @@
 
     <item android:id="@+id/home"
         android:icon="@drawable/home"
+        android:title="Home"
         >
     </item>
 
     <item android:id="@+id/tvseries"
         android:icon="@drawable/tv"
+        android:title="TV Series"
         >
     </item>
 
     <item android:id="@+id/movies"
         android:icon="@drawable/movie"
+        android:title="Movies"
+        >
+    </item>
+
+    <item android:id="@+id/trend"
+        android:icon="@drawable/trending"
+        android:title="Trending"
         >
     </item>
 
     <item android:id="@+id/search"
         android:icon="@drawable/search"
+        android:title="Search"
         >
-
     </item>
 
 </menu>

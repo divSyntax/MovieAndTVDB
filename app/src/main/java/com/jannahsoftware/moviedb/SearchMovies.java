@@ -92,13 +92,13 @@ public class SearchMovies extends AppCompatActivity {
         final EditText taskEditText = new EditText(SearchMovies.this);
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(SearchMovies.this);
         alertDialogBuilder.setTitle("Search Movies");
-        alertDialogBuilder.setMessage("Example: Harry, Sponge, Ranger...ect");
+        alertDialogBuilder.setMessage("Ex: Harry or Harry Potter");
         alertDialogBuilder.setPositiveButton("Search", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 movieDBJSON.SearchMovies(taskEditText.getText().toString());
 
-                if(SearchMovies.recyclerView.getAdapter().getItemCount() == 0)
+                if(movieList.size() == 0)
                 {
                     Toast.makeText(SearchMovies.this, "Sorry, no movie found with that title. Please try again.", Toast.LENGTH_SHORT).show();
                     movieList.clear();

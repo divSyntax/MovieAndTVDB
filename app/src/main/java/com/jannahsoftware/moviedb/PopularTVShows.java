@@ -82,7 +82,7 @@ public class PopularTVShows extends AppCompatActivity
                         startActivity(new Intent(PopularTVShows.this, TVOptions.class));
                         break;
                     case R.id.search:
-                        startActivity(new Intent(PopularTVShows.this, SearchMovies.class));
+                        startActivity(new Intent(PopularTVShows.this, SearchTVShows.class));
                         break;
                     default:
                         //Toast.makeText(MainActivity.this, "", Toast.LENGTH_SHORT).show();
