@@ -29,4 +29,7 @@ public class Conts
     public static String GET_LATEST_TVSERVIES = "https://api.themoviedb.org/3/tv/latest?api_key="+ MainActivity.myKey +"&language=en-US";
     public static String SEARCH_TVSERIES = "https://api.themoviedb.org/3/search/tv?api_key="+ MainActivity.myKey +"&language=en-US&query=Power%20Ranger&page=1";
 
+    //Get Trending
+    public static  String GET_TRENDING_ALL = "https://api.themoviedb.org/3/trending/all/day?api_key="+MainActivity.myKey+"";
+
 }

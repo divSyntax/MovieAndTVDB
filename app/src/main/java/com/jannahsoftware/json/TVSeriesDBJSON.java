@@ -23,6 +23,7 @@ import org.json.JSONObject;
 
 public class TVSeriesDBJSON implements ITVSeries
 {
+    public static TVSeries tvSeries;
 
     public TVSeriesDBJSON()
     {
@@ -221,7 +222,7 @@ public class TVSeriesDBJSON implements ITVSeries
                     {
                         JSONObject jsonObject = array.getJSONObject(i);
 
-                        TVSeries tvSeries = new TVSeries();
+                        tvSeries = new TVSeries();
 
                         tvSeries.setName(jsonObject.getString("original_name"));
                         tvSeries.setPoster_path(jsonObject.getString("poster_path"));

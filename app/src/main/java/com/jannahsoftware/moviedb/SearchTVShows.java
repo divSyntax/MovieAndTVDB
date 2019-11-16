@@ -35,6 +35,8 @@ public class SearchTVShows extends AppCompatActivity {
     private FloatingActionButton floatsearchBtn;
     public static String myKey;
 
+    boolean isShowing = false;
+
     //adapter vars
     public static RecyclerView recyclerView;
     public static RecyclerView.Adapter adapter;
@@ -118,17 +120,25 @@ public class SearchTVShows extends AppCompatActivity {
         final EditText taskEditText = new EditText(SearchTVShows.this);
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(SearchTVShows.this);
         alertDialogBuilder.setTitle("Search TV Series");
-        alertDialogBuilder.setMessage("Ex: The Simpsons or Simpsons");
+        alertDialogBuilder.setMessage("Ex: The Simpsons, the simpsons or simpsons. Search is not case sensitive.");
         alertDialogBuilder.setPositiveButton("Search", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
 
-                tvSeriesDBJSON.SearchTVSeries(taskEditText.getText().toString());
-
-                if(SearchTVShows.tvSeriesList.size() == 0 && adapter.getItemCount() == 0)
+                if(taskEditText.getText().toString().isEmpty())
                 {
-                    Toast.makeText(SearchTVShows.this, "Sorry, no TV Series found with that title. Please try again.", Toast.LENGTH_SHORT).show();
+                     tvSeriesList.clear();
+                    Toast.makeText(SearchTVShows.this, "List " + taskEditText.getText().toString(), Toast.LENGTH_SHORT).show();
+                }else
+                {
                     tvSeriesList.clear();
+                    tvSeriesDBJSON.SearchTVSeries(taskEditText.getText().toString());
+                }
+
+                if(recyclerView.getAdapter().getItemCount() == 0)
+                {
+                    tvSeriesList.clear();
+                    Toast.makeText(SearchTVShows.this, "adapter" + adapter.getItemCount(), Toast.LENGTH_SHORT).show();
                 }
             }
         });
