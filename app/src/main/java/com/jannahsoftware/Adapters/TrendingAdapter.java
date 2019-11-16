@@ -13,7 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.jannahsoftware.Constants.Conts;
-import com.jannahsoftware.Model.Movie;
+import com.jannahsoftware.Model.Trending;
 import com.jannahsoftware.moviedb.MovieDetails;
 import com.jannahsoftware.moviedb.R;
 import com.squareup.picasso.Picasso;
@@ -22,12 +22,12 @@ import java.util.List;
 
 public class TrendingAdapter extends RecyclerView.Adapter<TrendingAdapter.ViewAdapter>
 {
-    private List<Movie> movieList;
+    private List<Trending> trendingList;
     private Context context;
     private boolean isLoaded = false;
 
-    public TrendingAdapter(List<Movie> movieList, Context context) {
-        this.movieList = movieList;
+    public TrendingAdapter(List<Trending> trendingList, Context context) {
+        this.trendingList = trendingList;
         this.context = context;
     }
 
@@ -46,16 +46,16 @@ public class TrendingAdapter extends RecyclerView.Adapter<TrendingAdapter.ViewAd
     @Override
     public void onBindViewHolder(@NonNull final ViewAdapter holder, final int position)
     {
-        final Movie movies = movieList.get(position);
+        final Trending trending = trendingList.get(position);
 
-        final String poster = Conts.GET_MOVIE_IMAGES + movies.getPoster_path();
-        final String backdropimage = Conts.GET_MOVIE_BACKDROP + movies.getPoster_path();
+        final String poster = Conts.GET_MOVIE_IMAGES + trending.getPoster_path();
+        final String backdropimage = Conts.GET_MOVIE_BACKDROP + trending.getPoster_path();
 
-        holder.title.setText(movies.getTitle());
-        holder.overviewtxt.setText(movies.getOverview());
-        holder.releasedate.setText(movies.getRelease_date());
-        holder.vote_average.setText(String.valueOf(movies.getVote_average()));
-        holder.popul_arity.setText(String.valueOf(movies.getPopularity()));
+        holder.title.setText(trending.getTitle());
+        holder.overviewtxt.setText(trending.getOverview());
+        holder.releasedate.setText(trending.getRelease_date());
+        holder.vote_average.setText(String.valueOf(trending.getVote_average()));
+        holder.popul_arity.setText(String.valueOf(trending.getPopularity()));
 
         holder.progressBar.setVisibility(View.VISIBLE);
 
@@ -66,7 +66,7 @@ public class TrendingAdapter extends RecyclerView.Adapter<TrendingAdapter.ViewAd
             Picasso.get().load(backdropimage).into(holder.backdrop);
         }else
         {
-            Picasso.get().load(movies.getPoster_path()).placeholder(R.drawable.ic_launcher_background);
+            Picasso.get().load(trending.getPoster_path()).placeholder(R.drawable.ic_launcher_background);
         }
 
         if(isLoaded == true)
@@ -79,17 +79,17 @@ public class TrendingAdapter extends RecyclerView.Adapter<TrendingAdapter.ViewAd
             public void onClick(View v) {
 
                 Intent i = new Intent(context, MovieDetails.class);
-                holder.title.setText(movies.getTitle());
-                holder.overviewtxt.setText(movies.getOverview());
+                holder.title.setText(trending.getTitle());
+                holder.overviewtxt.setText(trending.getOverview());
 
                 Picasso.get().load(poster).into(holder.posterImage);
                 Picasso.get().load(backdropimage).into(holder.backdrop);
 
-                String title = movies.getTitle();
-                String overview = movies.getOverview();
-                String releasedate = movies.getRelease_date();
-                int voteaverage = movies.getVote_average();
-                double popularity = movies.getPopularity();
+                String title = trending.getTitle();
+                String overview = trending.getOverview();
+                String releasedate = trending.getRelease_date();
+                int voteaverage = trending.getVote_average();
+                double popularity = trending.getPopularity();
 
                 i.putExtra("title",title);
                 i.putExtra("overview", overview);
@@ -97,7 +97,7 @@ public class TrendingAdapter extends RecyclerView.Adapter<TrendingAdapter.ViewAd
                 i.putExtra("poster",poster);
                 i.putExtra("backdrop", backdropimage);
 
-                i.putExtra("releasedate", releasedate);
+                i.putExtra("first_air_date", releasedate);
                 i.putExtra("voteaverage",voteaverage);
                 i.putExtra("popularity",popularity);
 
@@ -111,7 +111,7 @@ public class TrendingAdapter extends RecyclerView.Adapter<TrendingAdapter.ViewAd
     @Override
     public int getItemCount()
     {
-        return movieList.size();
+        return trendingList.size();
     }
 
     public class ViewAdapter extends RecyclerView.ViewHolder

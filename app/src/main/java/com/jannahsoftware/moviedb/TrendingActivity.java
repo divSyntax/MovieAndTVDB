@@ -7,35 +7,27 @@ import androidx.recyclerview.widget.PagerSnapHelper;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.SnapHelper;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
-import android.net.ConnectivityManager;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.ProgressBar;
-import android.widget.Toast;
 
 import com.android.volley.toolbox.Volley;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.jannahsoftware.Adapters.MovieAdapter;
-import com.jannahsoftware.Application.App;
+import com.jannahsoftware.Adapters.TrendingAdapter;
 import com.jannahsoftware.Constants.Conts;
-import com.jannahsoftware.Model.Movie;
 import com.jannahsoftware.Model.Trending;
 import com.jannahsoftware.NetWork.BroadCastReciever;
 import com.jannahsoftware.json.MovieDBJSON;
-import com.jannahsoftware.json.TVSeriesDBJSON;
 import com.jannahsoftware.json.TrendingDBJSON;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity
+public class TrendingActivity extends AppCompatActivity
 {
-    private MovieDBJSON movieDBJSON = new MovieDBJSON();
+    TrendingDBJSON  trendingDBJSON = new TrendingDBJSON();
     public static String myKey;
     private BroadCastReciever broadCastReciever;
     public static ProgressBar progressBar;
@@ -43,59 +35,32 @@ public class MainActivity extends AppCompatActivity
     //adapter vars
     private static RecyclerView recyclerView;
     public static RecyclerView.Adapter adapter;
-    public static List<Movie> movieList;
+    public static List<Trending> trendingList;
     private static LinearLayoutManager linearLayoutManager;
     private SnapHelper snapHelper;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-        BroadCastIntent();
-        SetRecyclerVars();
-        BottomNav();
+        setContentView(R.layout.activity_trending);
 
         myKey = getResources().getString(R.string.apikey);
         Conts.requestQueue = Volley.newRequestQueue(this);
         progressBar = findViewById(R.id.bar);
 
+        SetRecyclerVars();
+        BottomNav();
 
-        movieDBJSON.GetAllPopularMovies();
-
-        //movieDBJSON.GetUpcomingMovies();
-        //movieDBJSON.GetTopRatedMovies();
-        //movieDBJSON.GetNowPlayingMovies();
-        //movieDBJSON.GetLatestMovies();
-        //movieDBJSON.SearchMovies();
-
-
-        //tvSeriesDBJSON.GetAllPopularTVSeries();
-        //tvSeriesDBJSON.GetNowPlayingTVSeries();
-        //tvSeriesDBJSON.GetAiringTodayTVSeries();
-        //tvSeriesDBJSON.GetTopRatedTVSeries();
-        //tvSeriesDBJSON.GetLatestTVSeries();
-        //tvSeriesDBJSON.SearchTVSeries();
-
-//        TrendingDBJSON trendingDBJSON = new TrendingDBJSON();
-//        trendingDBJSON.getTrending();
-
-
+        trendingDBJSON.getTrending();
     }
 
-    private void BroadCastIntent()
-    {
-        broadCastReciever = new BroadCastReciever();
-        registerReceiver(broadCastReciever, new IntentFilter(ConnectivityManager.EXTRA_NO_CONNECTIVITY));
-    }
 
     private void SetRecyclerVars()
     {
         snapHelper = new PagerSnapHelper();
-        recyclerView = findViewById(R.id.pop_movies_rec);
-        movieList = new ArrayList<>();
-        adapter = new MovieAdapter(movieList, this);
+        recyclerView = findViewById(R.id.trending_rec);
+        trendingList = new ArrayList<>();
+        adapter = new TrendingAdapter(trendingList, this);
 
         linearLayoutManager = new LinearLayoutManager(this);
         linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
@@ -119,66 +84,26 @@ public class MainActivity extends AppCompatActivity
                 switch (menuItem.getItemId())
                 {
                     case R.id.home:
-                        startActivity(new Intent(MainActivity.this, MainActivity.class));
+                        startActivity(new Intent(TrendingActivity.this, MainActivity.class));
                         break;
                     case R.id.movies:
-                        startActivity(new Intent(MainActivity.this, MovieOptions.class));
+                        startActivity(new Intent(TrendingActivity.this, MovieOptions.class));
                         break;
                     case R.id.tvseries:
-                        startActivity(new Intent(MainActivity.this, TVOptions.class));
+                        startActivity(new Intent(TrendingActivity.this, TVOptions.class));
                         break;
                     case R.id.search:
-                        startActivity(new Intent(MainActivity.this, SearchMovies.class));
+                        startActivity(new Intent(TrendingActivity.this, SearchMovies.class));
                         break;
                     case R.id.trend:
-                        startActivity(new Intent(MainActivity.this, TrendingActivity.class));
+                        startActivity(new Intent(TrendingActivity.this, TrendingActivity.class));
                         break;
-                     default:
-                         //Toast.makeText(MainActivity.this, "", Toast.LENGTH_SHORT).show();
-                         break;
+                    default:
+                        //Toast.makeText(MainActivity.this, "", Toast.LENGTH_SHORT).show();
+                        break;
                 }
                 return false;
             }
         });
     }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        //unregisterReceiver(broadCastReciever);
-    }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

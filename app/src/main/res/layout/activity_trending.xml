@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Trending">
+    tools:context=".TrendingActivity">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/pop_movies_rec"
+        android:id="@+id/trending_rec"
         android:layout_width="395dp"
         android:layout_height="711dp"
         android:layout_marginStart="1dp"

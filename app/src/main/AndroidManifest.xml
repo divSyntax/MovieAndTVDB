@@ -13,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".TVSeriesDetails"></activity>
-        <activity android:name=".Trending" />
+        <activity android:name=".TrendingActivity" />
         <activity android:name=".PopularTVShows" />
         <activity
             android:name=".SearchTVShows"
