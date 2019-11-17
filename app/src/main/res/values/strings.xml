@@ -3,4 +3,10 @@
     <string name="apikey" type="String">bcefb0796976aa0ffdfe18e20fc3690e</string>
     <string name="movieTitle">Title</string>
 
+    <string name="ADUNIT_ID">ca-app-pub-7776978978509846/3584955787</string>
+    <string name="APP_ID">ca-app-pub-7776978978509846~1190879129</string>
+
+    <string name="TEST_UNIT_ID">ca-app-pub-3940256099942544/6300978111</string>
+    <string name="TEST_APP_ID">ca-app-pub-3940256099942544~3347511713</string>
+
 </resources>

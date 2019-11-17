@@ -39,21 +39,23 @@ public class TrendingDBJSON implements ITrnding {
                        Trending trending = new Trending();
 
                        trending.setTitle(jsonObject.optString("title"));
+                       trending.setOriginal_name(jsonObject.optString("name"));
                        trending.setPoster_path(jsonObject.optString("poster_path"));
                        trending.setBackdrop_path(jsonObject.optString("backdrop_path"));
                        trending.setOverview(jsonObject.optString("overview"));
-
-                       trending.setRelease_date(jsonObject.optString("first_air_date"));
+                       trending.setFirst_air_date(jsonObject.optString("first_air_date"));
+                       trending.setRelease_date(jsonObject.optString("release_date"));
                        trending.setVote_average((jsonObject.optInt("vote_average")));
                        trending.setPopularity(Math.round(jsonObject.getDouble("popularity")));
 
                        TrendingActivity.trendingList.add(trending);
 
                        Log.d("ARRAY", "onResponse: " + jsonObject.optString("title"));
+                       Log.d("Original_name","onResponse" + jsonObject.optString("name"));
                        Log.d("ARRAY", "onResponse: " + jsonObject.optString("poster_path"));
                        Log.d("Overview", "onResponse: " + jsonObject.optString("overview"));
-
-                       Log.d("ARRAY", "onResponse: " + jsonObject.optString("first_air_date"));
+                       Log.d("first_air_date","onResponse"+ jsonObject.optString("first_air_date"));
+                       Log.d("ARRAY", "onResponse: " + jsonObject.optString("release_date"));
                        Log.d("ARRAY", "onResponse: " + jsonObject.optInt("vote_average"));
                        Log.d("POP", "onResponse: " + Math.round(jsonObject.optDouble("popularity")));
                    }

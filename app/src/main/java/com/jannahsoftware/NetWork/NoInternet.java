@@ -41,12 +41,14 @@ public class NoInternet extends AppCompatActivity
             ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
             NetworkInfo netInfo = cm.getActiveNetworkInfo();
             if (netInfo != null && netInfo.isConnectedOrConnecting()) {
-                Toast.makeText(this, "Connection.", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(this, "Connection.", Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(NoInternet.this, MainActivity.class));
+                finish();
                 return true;
             } else {
                 Toast.makeText(this, "No connection.", Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(NoInternet.this, NoInternet.class));
+                finish();
                 return false;
             }
 

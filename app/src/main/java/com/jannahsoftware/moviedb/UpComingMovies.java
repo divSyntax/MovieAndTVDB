@@ -46,6 +46,8 @@ public class UpComingMovies extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_up_coming_movies);
 
+        setTitle("Upcoming Movies");
+
         myKey = getResources().getString(R.string.apikey);
         Conts.requestQueue = Volley.newRequestQueue(this);
         progressBar = findViewById(R.id.bar);
@@ -95,6 +97,9 @@ public class UpComingMovies extends AppCompatActivity {
                         break;
                     case R.id.search:
                         startActivity(new Intent(UpComingMovies.this, SearchMovies.class));
+                        break;
+                    case R.id.trend:
+                        startActivity(new Intent(UpComingMovies.this, TrendingActivity.class));
                         break;
                     default:
                         //Toast.makeText(MainActivity.this, "", Toast.LENGTH_SHORT).show();

@@ -52,12 +52,13 @@ public class TrendingAdapter extends RecyclerView.Adapter<TrendingAdapter.ViewAd
         final String backdropimage = Conts.GET_MOVIE_BACKDROP + trending.getPoster_path();
 
         holder.title.setText(trending.getTitle());
+        holder.original_name.setText(trending.getOriginal_name());
         holder.overviewtxt.setText(trending.getOverview());
         holder.releasedate.setText(trending.getRelease_date());
         holder.vote_average.setText(String.valueOf(trending.getVote_average()));
         holder.popul_arity.setText(String.valueOf(trending.getPopularity()));
 
-        holder.progressBar.setVisibility(View.VISIBLE);
+       // holder.progressBar.setVisibility(View.VISIBLE);
 
         if(holder.posterImage != null && holder.backdrop != null)
         {
@@ -97,7 +98,7 @@ public class TrendingAdapter extends RecyclerView.Adapter<TrendingAdapter.ViewAd
                 i.putExtra("poster",poster);
                 i.putExtra("backdrop", backdropimage);
 
-                i.putExtra("first_air_date", releasedate);
+                i.putExtra("releasedate", releasedate);
                 i.putExtra("voteaverage",voteaverage);
                 i.putExtra("popularity",popularity);
 
@@ -116,7 +117,7 @@ public class TrendingAdapter extends RecyclerView.Adapter<TrendingAdapter.ViewAd
 
     public class ViewAdapter extends RecyclerView.ViewHolder
     {
-        public TextView title, overviewtxt, releasedate, vote_average, popul_arity;
+        public TextView title, overviewtxt, releasedate, vote_average, popul_arity, original_name;
         public ImageView posterImage, backdrop;
         public ProgressBar progressBar;
 
@@ -126,6 +127,7 @@ public class TrendingAdapter extends RecyclerView.Adapter<TrendingAdapter.ViewAd
 
             context = ctx;
             title = itemView.findViewById(R.id.movie_name);
+            original_name = itemView.findViewById(R.id.movie_name);
             posterImage = itemView.findViewById(R.id.poster_image);
             backdrop = itemView.findViewById(R.id.backdrop_image);
             overviewtxt = itemView.findViewById(R.id.overview);

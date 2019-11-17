@@ -79,6 +79,9 @@ public class TVSeriesDetails extends AppCompatActivity {
                     case R.id.search:
                         startActivity(new Intent(TVSeriesDetails.this, SearchTVShows.class));
                         break;
+                    case R.id.trend:
+                        startActivity(new Intent(TVSeriesDetails.this, TrendingActivity.class));
+                        break;
                     default:
                         //Toast.makeText(MainActivity.this, "", Toast.LENGTH_SHORT).show();
                         break;

@@ -13,12 +13,20 @@ import android.content.IntentFilter;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.android.volley.toolbox.Volley;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdRequest.Builder;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.jannahsoftware.Adapters.MovieAdapter;
 import com.jannahsoftware.Application.App;
@@ -40,12 +48,15 @@ public class MainActivity extends AppCompatActivity
     private BroadCastReciever broadCastReciever;
     public static ProgressBar progressBar;
 
+    private AdView AdView;
+
     //adapter vars
     private static RecyclerView recyclerView;
     public static RecyclerView.Adapter adapter;
     public static List<Movie> movieList;
     private static LinearLayoutManager linearLayoutManager;
     private SnapHelper snapHelper;
+    AdRequest adRequest;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -53,6 +64,14 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        setTitle("Popular Movies");
+
+        MobileAds.initialize(this);
+
+        adRequest = new AdRequest.Builder().build();
+        AdView = findViewById(R.id.adView);
+
+        loadAD();
         BroadCastIntent();
         SetRecyclerVars();
         BottomNav();
@@ -60,6 +79,7 @@ public class MainActivity extends AppCompatActivity
         myKey = getResources().getString(R.string.apikey);
         Conts.requestQueue = Volley.newRequestQueue(this);
         progressBar = findViewById(R.id.bar);
+
 
 
         movieDBJSON.GetAllPopularMovies();
@@ -146,6 +166,45 @@ public class MainActivity extends AppCompatActivity
     protected void onPause() {
         super.onPause();
         //unregisterReceiver(broadCastReciever);
+    }
+
+    private void loadAD()
+    {
+        MobileAds.initialize(this, new OnInitializationCompleteListener() {
+            @Override
+            public void onInitializationComplete(InitializationStatus initializationStatus) {
+                Log.d("ADS", "onInitializationComplete: " + initializationStatus);
+            }
+        });
+
+        AdView.loadAd(adRequest);
+    }
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.top_nav, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+
+        switch (item.getItemId())
+        {
+            case R.id.game:
+                Toast.makeText(this, "Coming soon...", Toast.LENGTH_SHORT).show();
+                break;
+             default:
+                 //
+                 break;
+        }
+
+
+
+        return true;
     }
 }
 

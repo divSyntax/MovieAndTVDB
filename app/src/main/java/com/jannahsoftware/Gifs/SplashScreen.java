@@ -9,8 +9,6 @@ import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.os.Handler;
 import android.widget.Toast;
-
-import com.jannahsoftware.NetWork.CheckInternet;
 import com.jannahsoftware.NetWork.NoInternet;
 import com.jannahsoftware.moviedb.MainActivity;
 import com.jannahsoftware.moviedb.R;
@@ -35,8 +33,9 @@ public class SplashScreen extends AppCompatActivity {
         ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo netInfo = cm.getActiveNetworkInfo();
         if (netInfo != null && netInfo.isConnectedOrConnecting()) {
-            Toast.makeText(this, "Connection.", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this, "Connection.", Toast.LENGTH_SHORT).show();
             ShowSplashScreen();
+            finish();
             return true;
         } else {
             Toast.makeText(this, "No connection.", Toast.LENGTH_SHORT).show();

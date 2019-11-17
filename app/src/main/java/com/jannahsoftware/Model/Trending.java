@@ -15,6 +15,25 @@ public class Trending
     private int vote_average;
     private String overview;
     private String release_date;
+    private String first_air_date;
+    private String original_name;
+
+    public String getOriginal_name() {
+        return original_name;
+    }
+
+    public void setOriginal_name(String original_name) {
+        this.original_name = original_name;
+    }
+
+    public String getFirst_air_date() {
+        return first_air_date;
+    }
+
+    public void setFirst_air_date(String first_air_date) {
+        this.first_air_date = first_air_date;
+    }
+
     private String name;
     private String known_for_department;
 
@@ -138,7 +157,7 @@ public class Trending
         this.known_for_department = known_for_department;
     }
 
-    public Trending(double popularity, long vote_count, boolean video, String poster_path, long id, boolean adult, String backdrop_path, String origial_lang, String title, String original_title, int vote_average, String overview, String release_date, String name, String known_for_department) {
+    public Trending(String original_name, String first_air_date, double popularity, long vote_count, boolean video, String poster_path, long id, boolean adult, String backdrop_path, String origial_lang, String title, String original_title, int vote_average, String overview, String release_date, String name, String known_for_department) {
         this.popularity = popularity;
         this.vote_count = vote_count;
         this.video = video;
@@ -154,6 +173,8 @@ public class Trending
         this.release_date = release_date;
         this.name = name;
         this.known_for_department = known_for_department;
+        this.first_air_date = first_air_date;
+        this.original_name = original_name;
     }
 
     public Trending() {

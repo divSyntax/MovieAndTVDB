@@ -44,6 +44,8 @@ public class TrendingActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_trending);
 
+        setTitle("Trending Movies");
+
         myKey = getResources().getString(R.string.apikey);
         Conts.requestQueue = Volley.newRequestQueue(this);
         progressBar = findViewById(R.id.bar);

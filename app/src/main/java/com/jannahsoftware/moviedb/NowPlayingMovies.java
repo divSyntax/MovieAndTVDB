@@ -44,7 +44,7 @@ public class NowPlayingMovies extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_now_playing_movies);
-
+        setTitle("Movies Now Playing");
         SetRecyclerVars();
         BottomNav();
 
@@ -94,6 +94,9 @@ public class NowPlayingMovies extends AppCompatActivity {
                         break;
                     case R.id.search:
                         startActivity(new Intent(NowPlayingMovies.this, SearchMovies.class));
+                        break;
+                    case R.id.trend:
+                        startActivity(new Intent(NowPlayingMovies.this, TrendingActivity.class));
                         break;
                     default:
                         //Toast.makeText(MainActivity.this, "", Toast.LENGTH_SHORT).show();

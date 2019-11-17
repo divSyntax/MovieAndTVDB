@@ -52,41 +52,41 @@ public class TVOptions extends AppCompatActivity
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(TVOptions.this,PopularTVShows.class));
-                Toast.makeText(TVOptions.this, "Clicked.", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(TVOptions.this, "Clicked.", Toast.LENGTH_SHORT).show();
             }
         });
 
-//        up_comingTxt.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                startActivity(new Intent(TVOptions.this,UpComingMovies.class));
-//                Toast.makeText(TVOptions.this, "Clicked.", Toast.LENGTH_SHORT).show();
-//            }
-//        });
-//
-//        top_ratedTxt.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                startActivity(new Intent(TVOptions.this,TopRatedMovies.class));
-//                Toast.makeText(TVOptions.this, "Clicked.", Toast.LENGTH_SHORT).show();
-//            }
-//        });
-//
-//        now_playingTxt.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                startActivity(new Intent(TVOptions.this,NowPlayingMovies.class));
-//                Toast.makeText(TVOptions.this, "Clicked.", Toast.LENGTH_SHORT).show();
-//            }
-//        });
-//
-//        lates_moviesTxt.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                startActivity(new Intent(TVOptions.this,LatestMovies.class));
-//                Toast.makeText(TVOptions.this, "Clicked.", Toast.LENGTH_SHORT).show();
-//            }
-//        });
+        up_comingTxt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //startActivity(new Intent(TVOptions.this,UpComingMovies.class));
+                Toast.makeText(TVOptions.this, "Coming soon...", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        top_ratedTxt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //startActivity(new Intent(TVOptions.this,TopRatedMovies.class));
+                Toast.makeText(TVOptions.this, "Coming soon...", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        now_playingTxt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //startActivity(new Intent(TVOptions.this,NowPlayingMovies.class));
+                Toast.makeText(TVOptions.this, "Coming soon...", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        lates_moviesTxt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //startActivity(new Intent(TVOptions.this,LatestMovies.class));
+                Toast.makeText(TVOptions.this, "Coming soon...", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     private void ButtonClickEvents()
@@ -96,41 +96,41 @@ public class TVOptions extends AppCompatActivity
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(TVOptions.this,PopularTVShows.class));
-                Toast.makeText(TVOptions.this, "Clicked.", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(TVOptions.this, "Clicked.", Toast.LENGTH_SHORT).show();
             }
         });
 
-//        up_coming.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                startActivity(new Intent(TVOptions.this,UpComingMovies.class));
-//                Toast.makeText(TVOptions.this, "Clicked.", Toast.LENGTH_SHORT).show();
-//            }
-//        });
-//
-//        top_rated.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                startActivity(new Intent(TVOptions.this,TopRatedMovies.class));
-//                Toast.makeText(TVOptions.this, "Clicked.", Toast.LENGTH_SHORT).show();
-//            }
-//        });
-//
-//        now_playing.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                startActivity(new Intent(TVOptions.this,NowPlayingMovies.class));
-//                Toast.makeText(TVOptions.this, "Clicked.", Toast.LENGTH_SHORT).show();
-//            }
-//        });
-//
-//        lates_movies.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                startActivity(new Intent(TVOptions.this,LatestMovies.class));
-//                Toast.makeText(TVOptions.this, "Clicked.", Toast.LENGTH_SHORT).show();
-//            }
-//        });
+        up_coming.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //startActivity(new Intent(TVOptions.this,UpComingMovies.class));
+                Toast.makeText(TVOptions.this, "Coming soon...", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        top_rated.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //startActivity(new Intent(TVOptions.this,TopRatedMovies.class));
+                Toast.makeText(TVOptions.this, "Coming soon...", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        now_playing.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //startActivity(new Intent(TVOptions.this,NowPlayingMovies.class));
+                Toast.makeText(TVOptions.this, "Coming soon...", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        lates_movies.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //startActivity(new Intent(TVOptions.this,LatestMovies.class));
+                Toast.makeText(TVOptions.this, "Coming soon...", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     private void BottomNav()
@@ -154,6 +154,9 @@ public class TVOptions extends AppCompatActivity
                         break;
                     case R.id.search:
                         startActivity(new Intent(TVOptions.this, SearchTVShows.class));
+                        break;
+                    case R.id.trend:
+                        startActivity(new Intent(TVOptions.this, TrendingActivity.class));
                         break;
                     default:
                         //Toast.makeText(MovieOptions.this, "", Toast.LENGTH_SHORT).show();

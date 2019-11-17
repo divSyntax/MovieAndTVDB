@@ -91,7 +91,7 @@ public class SearchMovies extends AppCompatActivity {
         final EditText taskEditText = new EditText(SearchMovies.this);
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(SearchMovies.this);
         alertDialogBuilder.setTitle("Search Movies");
-        alertDialogBuilder.setMessage("Ex: Harry or Harry Potter");
+        alertDialogBuilder.setMessage("Ex: Harry Potter, harry potter or harry. Search is not case sensitive.");
         alertDialogBuilder.setPositiveButton("Search", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
@@ -100,7 +100,7 @@ public class SearchMovies extends AppCompatActivity {
 
                 if(movieList.size() == 0 && adapter.getItemCount() == 0)
                 {
-                    Toast.makeText(SearchMovies.this, "Sorry, no movie found with that title. Please try again.", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(SearchMovies.this, "Sorry, no movie found with that title. Please try again.", Toast.LENGTH_SHORT).show();
                     movieList.clear();
                 }
             }
@@ -149,6 +149,9 @@ public class SearchMovies extends AppCompatActivity {
                         break;
                     case R.id.search:
                         startActivity(new Intent(SearchMovies.this, SearchMovies.class));
+                        break;
+                    case R.id.trend:
+                        startActivity(new Intent(SearchMovies.this, TrendingActivity.class));
                         break;
                     default:
                         //Toast.makeText(MovieOptions.this, "", Toast.LENGTH_SHORT).show();

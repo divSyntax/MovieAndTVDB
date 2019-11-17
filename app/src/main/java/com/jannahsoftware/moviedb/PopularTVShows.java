@@ -35,6 +35,7 @@ public class PopularTVShows extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setTitle("Popular TV Shows");
         setContentView(R.layout.activity_popular_tvshows);
 
         tvSeriesDBJSON.GetAllPopularTVSeries();
@@ -83,6 +84,9 @@ public class PopularTVShows extends AppCompatActivity
                         break;
                     case R.id.search:
                         startActivity(new Intent(PopularTVShows.this, SearchTVShows.class));
+                        break;
+                    case R.id.trend:
+                        startActivity(new Intent(PopularTVShows.this, TrendingActivity.class));
                         break;
                     default:
                         //Toast.makeText(MainActivity.this, "", Toast.LENGTH_SHORT).show();

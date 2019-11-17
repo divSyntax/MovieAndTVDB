@@ -45,6 +45,8 @@ public class LatestMovies extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_latest_movies);
 
+        setTitle("Latest Movies");
+
         myKey = getResources().getString(R.string.apikey);
         Conts.requestQueue = Volley.newRequestQueue(this);
         progressBar = findViewById(R.id.bar);
@@ -94,6 +96,9 @@ public class LatestMovies extends AppCompatActivity {
                         break;
                     case R.id.search:
                         startActivity(new Intent(LatestMovies.this, SearchMovies.class));
+                        break;
+                    case R.id.trend:
+                        startActivity(new Intent(LatestMovies.this, TrendingActivity.class));
                         break;
                     default:
                         //Toast.makeText(MainActivity.this, "", Toast.LENGTH_SHORT).show();

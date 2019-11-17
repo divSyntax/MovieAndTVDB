@@ -36,7 +36,7 @@ public class MovieOptions extends AppCompatActivity
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MovieOptions.this,MainActivity.class));
-                Toast.makeText(MovieOptions.this, "Clicked.", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(MovieOptions.this, "Clicked.", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -44,7 +44,7 @@ public class MovieOptions extends AppCompatActivity
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MovieOptions.this,UpComingMovies.class));
-                Toast.makeText(MovieOptions.this, "Clicked.", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(MovieOptions.this, "Clicked.", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -52,7 +52,7 @@ public class MovieOptions extends AppCompatActivity
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MovieOptions.this,TopRatedMovies.class));
-                Toast.makeText(MovieOptions.this, "Clicked.", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(MovieOptions.this, "Clicked.", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -60,7 +60,7 @@ public class MovieOptions extends AppCompatActivity
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MovieOptions.this,NowPlayingMovies.class));
-                Toast.makeText(MovieOptions.this, "Clicked.", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(MovieOptions.this, "Clicked.", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -68,7 +68,7 @@ public class MovieOptions extends AppCompatActivity
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MovieOptions.this,LatestMovies.class));
-                Toast.makeText(MovieOptions.this, "Clicked.", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(MovieOptions.this, "Clicked.", Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -80,7 +80,7 @@ public class MovieOptions extends AppCompatActivity
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MovieOptions.this,MainActivity.class));
-                Toast.makeText(MovieOptions.this, "Clicked.", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(MovieOptions.this, "Clicked.", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -88,7 +88,7 @@ public class MovieOptions extends AppCompatActivity
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MovieOptions.this,UpComingMovies.class));
-                Toast.makeText(MovieOptions.this, "Clicked.", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(MovieOptions.this, "Clicked.", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -96,7 +96,7 @@ public class MovieOptions extends AppCompatActivity
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MovieOptions.this,TopRatedMovies.class));
-                Toast.makeText(MovieOptions.this, "Clicked.", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(MovieOptions.this, "Clicked.", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -104,7 +104,7 @@ public class MovieOptions extends AppCompatActivity
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MovieOptions.this,NowPlayingMovies.class));
-                Toast.makeText(MovieOptions.this, "Clicked.", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(MovieOptions.this, "Clicked.", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -112,7 +112,7 @@ public class MovieOptions extends AppCompatActivity
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MovieOptions.this,LatestMovies.class));
-                Toast.makeText(MovieOptions.this, "Clicked.", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(MovieOptions.this, "Clicked.", Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -153,6 +153,9 @@ public class MovieOptions extends AppCompatActivity
                         break;
                     case R.id.search:
                         startActivity(new Intent(MovieOptions.this, SearchMovies.class));
+                        break;
+                    case R.id.trend:
+                        startActivity(new Intent(MovieOptions.this, TrendingActivity.class));
                         break;
                     default:
                         //Toast.makeText(MovieOptions.this, "", Toast.LENGTH_SHORT).show();

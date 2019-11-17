@@ -9,6 +9,7 @@ import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.android.gms.ads.MobileAds;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.squareup.picasso.Picasso;
 
@@ -78,6 +79,9 @@ public class MovieDetails extends AppCompatActivity {
                         break;
                     case R.id.search:
                         startActivity(new Intent(MovieDetails.this, SearchMovies.class));
+                        break;
+                    case R.id.trend:
+                        startActivity(new Intent(MovieDetails.this, TrendingActivity.class));
                         break;
                     default:
                         //Toast.makeText(MainActivity.this, "", Toast.LENGTH_SHORT).show();

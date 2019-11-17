@@ -12,24 +12,43 @@
         android:roundIcon="@drawable/tv_icon"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".TVSeriesDetails"></activity>
-        <activity android:name=".TrendingActivity" />
-        <activity android:name=".PopularTVShows" />
+        <activity android:name=".LatestTVSeries"></activity>
+        <activity
+            android:name=".TVSeriesDetails"
+            android:theme="@style/Theme.AppCompat.DayNight.DarkActionBar" />
+        <activity
+            android:name=".TrendingActivity"
+            android:theme="@style/Theme.AppCompat.DayNight.DarkActionBar" />
+        <activity
+            android:name=".PopularTVShows"
+            android:theme="@style/Theme.AppCompat.DayNight.DarkActionBar" />
         <activity
             android:name=".SearchTVShows"
             android:theme="@style/Theme.AppCompat.DayNight.DarkActionBar" />
-        <activity android:name=".LatestMovies" />
-        <activity android:name=".NowPlayingMovies" />
-        <activity android:name=".TopRatedMovies" />
-        <activity android:name=".UpComingMovies" />
+        <activity
+            android:name=".LatestMovies"
+            android:theme="@style/Theme.AppCompat.DayNight.DarkActionBar" />
+        <activity
+            android:name=".NowPlayingMovies"
+            android:theme="@style/Theme.AppCompat.DayNight.DarkActionBar" />
+        <activity
+            android:name=".TopRatedMovies"
+            android:theme="@style/Theme.AppCompat.DayNight.DarkActionBar" />
+        <activity
+            android:name=".UpComingMovies"
+            android:theme="@style/Theme.AppCompat.DayNight.DarkActionBar" />
         <activity android:name=".TVOptions" />
-        <activity android:name="com.jannahsoftware.NetWork.NoInternet" />
+        <activity
+            android:name="com.jannahsoftware.NetWork.NoInternet"
+            android:theme="@style/Theme.AppCompat.DayNight.DarkActionBar" />
         <activity android:name=".MovieDetails" />
         <activity
             android:name=".SearchMovies"
             android:theme="@style/Theme.AppCompat.DayNight.DarkActionBar" />
         <activity android:name=".MovieOptions" />
-        <activity android:name=".MainActivity" />
+        <activity
+            android:name=".MainActivity"
+            android:theme="@style/Theme.AppCompat.DayNight.DarkActionBar" />
         <activity android:name="com.jannahsoftware.Gifs.SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -44,6 +63,10 @@
                 <action android:name="android.net.conn.wifi.WIFI_STATE_CHANGED" />
             </intent-filter>
         </receiver>
+
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="@string/APP_ID" />
     </application>
 
 </manifest>

@@ -58,7 +58,7 @@ public class PopularTVAdapter extends RecyclerView.Adapter<PopularTVAdapter.View
         holder.vote_average.setText(String.valueOf(tvSeries.getVote_average()));
         holder.popul_arity.setText(String.valueOf(tvSeries.getPopularity()));
 
-        holder.progressBar.setVisibility(View.VISIBLE);
+        //holder.progressBar.setVisibility(View.VISIBLE);
 
         if(holder.posterImage != null && holder.backdrop != null)
         {

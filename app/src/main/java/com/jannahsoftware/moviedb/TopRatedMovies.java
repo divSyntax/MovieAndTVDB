@@ -44,6 +44,8 @@ public class TopRatedMovies extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_top_rated_movies);
 
+        setTitle("Top Rated Movies");
+
         myKey = getResources().getString(R.string.apikey);
         Conts.requestQueue = Volley.newRequestQueue(this);
         progressBar = findViewById(R.id.bar);
@@ -92,6 +94,9 @@ public class TopRatedMovies extends AppCompatActivity {
                         break;
                     case R.id.search:
                         startActivity(new Intent(TopRatedMovies.this, SearchMovies.class));
+                        break;
+                    case R.id.trend:
+                        startActivity(new Intent(TopRatedMovies.this, TrendingActivity.class));
                         break;
                     default:
                         //Toast.makeText(MainActivity.this, "", Toast.LENGTH_SHORT).show();
