@@ -35,7 +35,7 @@ public class SplashScreen extends AppCompatActivity {
         if (netInfo != null && netInfo.isConnectedOrConnecting()) {
             //Toast.makeText(this, "Connection.", Toast.LENGTH_SHORT).show();
             ShowSplashScreen();
-            finish();
+            //finish();
             return true;
         } else {
             Toast.makeText(this, "No connection.", Toast.LENGTH_SHORT).show();

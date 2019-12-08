@@ -59,24 +59,24 @@ public class TVOptions extends AppCompatActivity
         up_comingTxt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //startActivity(new Intent(TVOptions.this,UpComingMovies.class));
-                Toast.makeText(TVOptions.this, "Coming soon...", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(TVOptions.this,TVSeriesAiringToday.class));
+                //Toast.makeText(TVOptions.this, "Coming soon...", Toast.LENGTH_SHORT).show();
             }
         });
 
         top_ratedTxt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //startActivity(new Intent(TVOptions.this,TopRatedMovies.class));
-                Toast.makeText(TVOptions.this, "Coming soon...", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(TVOptions.this,TopRatedTVSeries.class));
+                //Toast.makeText(TVOptions.this, "Coming soon...", Toast.LENGTH_SHORT).show();
             }
         });
 
         now_playingTxt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //startActivity(new Intent(TVOptions.this,NowPlayingMovies.class));
-                Toast.makeText(TVOptions.this, "Coming soon...", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(TVOptions.this,NowAiringTVShows.class));
+                //Toast.makeText(TVOptions.this, "Coming soon...", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -103,24 +103,24 @@ public class TVOptions extends AppCompatActivity
         up_coming.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //startActivity(new Intent(TVOptions.this,UpComingMovies.class));
-                Toast.makeText(TVOptions.this, "Coming soon...", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(TVOptions.this,TVSeriesAiringToday.class));
+                //Toast.makeText(TVOptions.this, "Coming soon...", Toast.LENGTH_SHORT).show();
             }
         });
 
         top_rated.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //startActivity(new Intent(TVOptions.this,TopRatedMovies.class));
-                Toast.makeText(TVOptions.this, "Coming soon...", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(TVOptions.this,TopRatedTVSeries.class));
+                //Toast.makeText(TVOptions.this, "Coming soon...", Toast.LENGTH_SHORT).show();
             }
         });
 
         now_playing.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //startActivity(new Intent(TVOptions.this,NowPlayingMovies.class));
-                Toast.makeText(TVOptions.this, "Coming soon...", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(TVOptions.this,NowAiringTVShows.class));
+                //Toast.makeText(TVOptions.this, "Coming soon...", Toast.LENGTH_SHORT).show();
             }
         });
 

@@ -12,16 +12,16 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.jannahsoftware.Adapters.PopularTVAdapter;
+import com.jannahsoftware.Adapters.TVSeriesAiringTodayAdapter;
+import com.jannahsoftware.Adapters.TopRatedTVSeriesAdapter;
 import com.jannahsoftware.Model.TVSeries;
 import com.jannahsoftware.json.TVSeriesDBJSON;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class LatestTVSeries extends AppCompatActivity
+public class TopRatedTVSeries extends AppCompatActivity
 {
-
     TVSeriesDBJSON tvSeriesDBJSON = new TVSeriesDBJSON();
 
     //adapter vars
@@ -34,12 +34,11 @@ public class LatestTVSeries extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_latest_tvseries);
+        setContentView(R.layout.activity_top_rated_tvseries);
 
-        setTitle("Latest TV Shows");
-        setContentView(R.layout.activity_popular_tvshows);
+        setTitle("Top Rated TV Shows");
 
-        tvSeriesDBJSON.GetAllPopularTVSeries();
+        tvSeriesDBJSON.GetTopRatedTVSeries();
 
         SetRecyclerVars();
         BottomNav();
@@ -48,9 +47,9 @@ public class LatestTVSeries extends AppCompatActivity
     private void SetRecyclerVars()
     {
         snapHelper = new PagerSnapHelper();
-        recyclerView = findViewById(R.id.pop_tv_rec);
+        recyclerView = findViewById(R.id.toptv_series_recc);
         tvSeriesList = new ArrayList<>();
-        adapter = new PopularTVAdapter(tvSeriesList, this);
+        adapter = new TopRatedTVSeriesAdapter(tvSeriesList, this);
 
         linearLayoutManager = new LinearLayoutManager(this);
         linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
@@ -74,19 +73,19 @@ public class LatestTVSeries extends AppCompatActivity
                 switch (menuItem.getItemId())
                 {
                     case R.id.home:
-                        startActivity(new Intent(LatestTVSeries.this, MainActivity.class));
+                        startActivity(new Intent(TopRatedTVSeries.this, MainActivity.class));
                         break;
                     case R.id.movies:
-                        startActivity(new Intent(LatestTVSeries.this, MovieOptions.class));
+                        startActivity(new Intent(TopRatedTVSeries.this, MovieOptions.class));
                         break;
                     case R.id.tvseries:
-                        startActivity(new Intent(LatestTVSeries.this, TVOptions.class));
+                        startActivity(new Intent(TopRatedTVSeries.this, TVOptions.class));
                         break;
                     case R.id.search:
-                        startActivity(new Intent(LatestTVSeries.this, SearchTVShows.class));
+                        startActivity(new Intent(TopRatedTVSeries.this, SearchTVShows.class));
                         break;
                     case R.id.trend:
-                        startActivity(new Intent(LatestTVSeries.this, TrendingActivity.class));
+                        startActivity(new Intent(TopRatedTVSeries.this, TrendingActivity.class));
                         break;
                     default:
                         //Toast.makeText(MainActivity.this, "", Toast.LENGTH_SHORT).show();

@@ -43,6 +43,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity
 {
+    TVSeriesDBJSON tvSeriesDBJSON = new TVSeriesDBJSON();
     private MovieDBJSON movieDBJSON = new MovieDBJSON();
     public static String myKey;
     private BroadCastReciever broadCastReciever;
@@ -95,7 +96,7 @@ public class MainActivity extends AppCompatActivity
         //tvSeriesDBJSON.GetNowPlayingTVSeries();
         //tvSeriesDBJSON.GetAiringTodayTVSeries();
         //tvSeriesDBJSON.GetTopRatedTVSeries();
-        //tvSeriesDBJSON.GetLatestTVSeries();
+        tvSeriesDBJSON.GetLatestTVSeries();
         //tvSeriesDBJSON.SearchTVSeries();
 
 //        TrendingDBJSON trendingDBJSON = new TrendingDBJSON();

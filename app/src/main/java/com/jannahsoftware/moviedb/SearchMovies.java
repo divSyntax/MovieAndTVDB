@@ -98,10 +98,20 @@ public class SearchMovies extends AppCompatActivity {
 
                 movieDBJSON.SearchMovies(taskEditText.getText().toString());
 
-                if(movieList.size() == 0 && adapter.getItemCount() == 0)
+                if(taskEditText.getText().toString().isEmpty())
                 {
-                    //Toast.makeText(SearchMovies.this, "Sorry, no movie found with that title. Please try again.", Toast.LENGTH_SHORT).show();
                     movieList.clear();
+                    //Toast.makeText(SearchTVShows.this, "List " + taskEditText.getText().toString(), Toast.LENGTH_SHORT).show();
+                }else
+                {
+                    movieList.clear();
+                    //movieDBJSON.SearchMovies(taskEditText.getText().toString());
+                }
+
+                if(recyclerView.getAdapter().getItemCount() == 0)
+                {
+                    movieList.clear();
+                    //Toast.makeText(SearchTVShows.this, "adapter" + adapter.getItemCount(), Toast.LENGTH_SHORT).show();
                 }
             }
         });

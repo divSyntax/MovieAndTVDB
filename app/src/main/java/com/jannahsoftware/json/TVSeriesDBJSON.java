@@ -11,15 +11,22 @@ import com.jannahsoftware.Constants.Conts;
 import com.jannahsoftware.Model.ITVSeries;
 import com.jannahsoftware.Model.Movie;
 import com.jannahsoftware.Model.TVSeries;
+import com.jannahsoftware.moviedb.LatestMovies;
+import com.jannahsoftware.moviedb.LatestTVSeries;
 import com.jannahsoftware.moviedb.MainActivity;
+import com.jannahsoftware.moviedb.NowAiringTVShows;
 import com.jannahsoftware.moviedb.PopularTVShows;
 import com.jannahsoftware.moviedb.R;
 import com.jannahsoftware.moviedb.SearchMovies;
 import com.jannahsoftware.moviedb.SearchTVShows;
+import com.jannahsoftware.moviedb.TVSeriesAiringToday;
+import com.jannahsoftware.moviedb.TopRatedTVSeries;
 import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
+
+import java.security.acl.LastOwnerException;
 
 public class TVSeriesDBJSON implements ITVSeries
 {
@@ -99,13 +106,28 @@ public class TVSeriesDBJSON implements ITVSeries
                     for(int i = 0; i < array.length(); i++)
                     {
                         JSONObject jsonObject = array.getJSONObject(i);
-                        Log.d("TVTODAY", "onResponse: " + jsonObject.getString("name"));
+
+                        TVSeries tvSeries = new TVSeries();
+
+                        tvSeries.setName(jsonObject.getString("name"));
+                        tvSeries.setPoster_path(jsonObject.getString("poster_path"));
+                        tvSeries.setBackdrop_path(jsonObject.getString("backdrop_path"));
+                        tvSeries.setOverview(jsonObject.getString("overview"));
+
+                        tvSeries.setFirst_air_date(jsonObject.getString("first_air_date"));
+                        tvSeries.setVote_average(jsonObject.getInt("vote_average"));
+                        tvSeries.setPopularity(Math.round(jsonObject.getDouble("popularity")));
+
+                        TVSeriesAiringToday.tvSeriesList.add(tvSeries);
                     }
 
+                    TVSeriesAiringToday.adapter.notifyDataSetChanged();
                 }catch (Exception e)
                 {
                     e.printStackTrace();
                 }
+
+
             }
         }, new Response.ErrorListener() {
             @Override
@@ -131,13 +153,30 @@ public class TVSeriesDBJSON implements ITVSeries
                     for(int i = 0; i < array.length(); i++)
                     {
                         JSONObject jsonObject = array.getJSONObject(i);
-                        Log.d("TVRATED", "onResponse: " + jsonObject.getString("name"));
+
+                        TVSeries tvSeries = new TVSeries();
+
+                        tvSeries.setName(jsonObject.getString("name"));
+                        tvSeries.setPoster_path(jsonObject.getString("poster_path"));
+                        tvSeries.setBackdrop_path(jsonObject.getString("backdrop_path"));
+                        tvSeries.setOverview(jsonObject.getString("overview"));
+
+                        tvSeries.setFirst_air_date(jsonObject.getString("first_air_date"));
+                        tvSeries.setVote_average(jsonObject.getInt("vote_average"));
+                        tvSeries.setPopularity(Math.round(jsonObject.getDouble("popularity")));
+
+                        Log.d("TOPRATED", "onResponse: " + tvSeries.getName());
+
+                        TopRatedTVSeries.tvSeriesList.add(tvSeries);
                     }
 
+                    TopRatedTVSeries.adapter.notifyDataSetChanged();
                 }catch (Exception e)
                 {
                     e.printStackTrace();
                 }
+
+
             }
         }, new Response.ErrorListener() {
             @Override
@@ -163,13 +202,31 @@ public class TVSeriesDBJSON implements ITVSeries
                     for(int i = 0; i < array.length(); i++)
                     {
                         JSONObject jsonObject = array.getJSONObject(i);
-                        Log.d("TV", "onResponse: " + jsonObject.getString("name"));
-                    }
 
-                }catch (Exception e)
+                        TVSeries tvSeries = new TVSeries();
+
+                        tvSeries.setName(jsonObject.getString("name"));
+                        tvSeries.setPoster_path(jsonObject.getString("poster_path"));
+                        tvSeries.setBackdrop_path(jsonObject.getString("backdrop_path"));
+                        tvSeries.setOverview(jsonObject.getString("overview"));
+
+                        tvSeries.setFirst_air_date(jsonObject.getString("first_air_date"));
+                        tvSeries.setVote_average(jsonObject.getInt("vote_average"));
+                        tvSeries.setPopularity(Math.round(jsonObject.getDouble("popularity")));
+
+                        Log.d("TV", "onResponse: " + jsonObject.getString("name"));
+
+
+                        NowAiringTVShows.tvSeriesList.add(tvSeries);
+                    }
+                    NowAiringTVShows.adapter.notifyDataSetChanged();
+                }
+
+                catch (Exception e)
                 {
                     e.printStackTrace();
                 }
+
             }
         }, new Response.ErrorListener() {
             @Override
@@ -189,13 +246,28 @@ public class TVSeriesDBJSON implements ITVSeries
 
                 try
                 {
-                    String title = response.getString("name");
-                    Log.d("LASTEST", "onResponse:  " + title);
 
-                }catch (Exception e)
+                    TVSeries series = new TVSeries();
+
+                    series.setName(response.getString("title"));
+                    series.setPoster_path(response.getString("poster_path"));
+                    series.setBackdrop_path(response.getString("backdrop_path"));
+                    series.setOverview(response.getString("overview"));
+
+                    series.setFirst_air_date(response.getString("release_date"));
+                    series.setVote_average(response.getInt("vote_average"));
+                    series.setPopularity(Math.round(response.getDouble("popularity")));
+
+                    //LatestTVSeries.movieList.add(series);
+
+                    //LatestTVSeries.adapter.notifyDataSetChanged();
+                }
+                catch (Exception e)
                 {
                     e.printStackTrace();
                 }
+
+
             }
         }, new Response.ErrorListener() {
             @Override
@@ -250,6 +322,7 @@ public class TVSeriesDBJSON implements ITVSeries
                 {
                     e.printStackTrace();
                 }
+
             }
         }, new Response.ErrorListener() {
             @Override

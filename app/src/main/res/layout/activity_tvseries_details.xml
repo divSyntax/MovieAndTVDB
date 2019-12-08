@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/background"
     tools:context=".TVSeriesDetails">
 
     <androidx.cardview.widget.CardView
@@ -19,8 +20,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/film_roll_static"
-            >
+            android:background="@drawable/film_roll_static">
 
             <ImageView
                 android:id="@+id/details_backdrop"
@@ -53,6 +53,7 @@
         android:layout_width="379dp"
         android:layout_height="314dp"
         android:layout_marginBottom="8dp"
+        android:background="@color/colorPrimaryDark"
         app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.533"

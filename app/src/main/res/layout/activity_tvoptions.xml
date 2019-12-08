@@ -76,7 +76,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="84dp"
                 android:fontFamily="casual"
-                android:text="Up Coming TV Shows"
+                android:text="Airing Today TV Shows"
                 android:textAlignment="center"
                 android:textColor="@color/background"
                 android:textSize="18sp"

@@ -12,7 +12,17 @@
         android:roundIcon="@drawable/tv_icon"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".LatestTVSeries"></activity>
+        <activity android:name=".LatestTVSeries"
+            android:theme="@style/Theme.AppCompat.DayNight.DarkActionBar"/>
+        <activity
+            android:name=".NowAiringTVShows"
+            android:theme="@style/Theme.AppCompat.DayNight.DarkActionBar" />
+        <activity
+            android:name=".TopRatedTVSeries"
+            android:theme="@style/Theme.AppCompat.DayNight.DarkActionBar" />
+        <activity
+            android:name=".TVSeriesAiringToday"
+            android:theme="@style/Theme.AppCompat.DayNight.DarkActionBar" />
         <activity
             android:name=".TVSeriesDetails"
             android:theme="@style/Theme.AppCompat.DayNight.DarkActionBar" />
