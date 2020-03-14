@@ -83,8 +83,8 @@ public class TVOptions extends AppCompatActivity
         lates_moviesTxt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //startActivity(new Intent(TVOptions.this,LatestMovies.class));
-                Toast.makeText(TVOptions.this, "Coming soon...", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(TVOptions.this,LatestTVSeries.class));
+                //Toast.makeText(TVOptions.this, "Coming soon...", Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -127,8 +127,8 @@ public class TVOptions extends AppCompatActivity
         lates_movies.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //startActivity(new Intent(TVOptions.this,LatestMovies.class));
-                Toast.makeText(TVOptions.this, "Coming soon...", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(TVOptions.this,LatestTVSeries.class));
+                //Toast.makeText(TVOptions.this, "Coming soon...", Toast.LENGTH_SHORT).show();
             }
         });
     }

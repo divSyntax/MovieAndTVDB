@@ -7,6 +7,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
+import com.jannahsoftware.Adapters.LatestTVSeriesAdapter;
 import com.jannahsoftware.Constants.Conts;
 import com.jannahsoftware.Model.ITVSeries;
 import com.jannahsoftware.Model.Movie;
@@ -240,34 +241,34 @@ public class TVSeriesDBJSON implements ITVSeries
     @Override
     public void GetLatestTVSeries()
     {
-        JsonObjectRequest getallmovies = new JsonObjectRequest(Request.Method.GET, Conts.GET_LATEST_TVSERVIES,null, new Response.Listener<JSONObject>() {
+        StringRequest getallmovies = new StringRequest(Request.Method.GET, Conts.GET_LATEST_TV_SERIES, new Response.Listener<String>() {
             @Override
-            public void onResponse(JSONObject response) {
-
+            public void onResponse(String response) {
                 try
                 {
+                        JSONObject jsonObject = new JSONObject(response);
+                        Log.d("JSONOBJ ", "onResponse: " + jsonObject);
 
-                    TVSeries series = new TVSeries();
+                        TVSeries tvSeries = new TVSeries();
 
-                    series.setName(response.getString("title"));
-                    series.setPoster_path(response.getString("poster_path"));
-                    series.setBackdrop_path(response.getString("backdrop_path"));
-                    series.setOverview(response.getString("overview"));
+                        tvSeries.setName(jsonObject.getString("name"));
+                        tvSeries.setPoster_path(jsonObject.getString("poster_path"));
+                        tvSeries.setBackdrop_path(jsonObject.getString("backdrop_path"));
+                        tvSeries.setOverview(jsonObject.getString("overview"));
 
-                    series.setFirst_air_date(response.getString("release_date"));
-                    series.setVote_average(response.getInt("vote_average"));
-                    series.setPopularity(Math.round(response.getDouble("popularity")));
+                        tvSeries.setFirst_air_date(jsonObject.getString("first_air_date"));
+                        tvSeries.setVote_average(jsonObject.getInt("vote_average"));
+                        tvSeries.setPopularity(Math.round(jsonObject.getDouble("popularity")));
 
-                    //LatestTVSeries.movieList.add(series);
+                        Log.d("TV", "onResponse: " + jsonObject.getString("overview"));
+                        LatestTVSeries.tvSeriesList.add(tvSeries);
 
-                    //LatestTVSeries.adapter.notifyDataSetChanged();
+                        LatestTVSeries.adapter.notifyDataSetChanged();
                 }
                 catch (Exception e)
                 {
-                    e.printStackTrace();
+                    e.getMessage();
                 }
-
-
             }
         }, new Response.ErrorListener() {
             @Override
@@ -275,6 +276,7 @@ public class TVSeriesDBJSON implements ITVSeries
                 error.printStackTrace();
             }
         });
+
         Conts.requestQueue.add(getallmovies);
     }
 

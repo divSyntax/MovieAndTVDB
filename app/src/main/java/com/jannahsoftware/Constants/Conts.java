@@ -26,11 +26,10 @@ public class Conts
     public static String GET_ALL_TV_AIRING_TODAY_TVSERVIES = "https://api.themoviedb.org/3/tv/airing_today?api_key="+ MainActivity.myKey +"&language=en-US&page=1";
     public static String GET_ALL_TOP_RATED_TVSERVIES = "https://api.themoviedb.org/3/tv/top_rated?api_key="+ MainActivity.myKey +"&language=en-US&page=1";
     public static String GET_NOW_PLAYING_TVSERVIES = "https://api.themoviedb.org/3/tv/on_the_air?page=1&language=en-US&api_key="+ MainActivity.myKey +"&language=en-US&page=1";
-    public static String GET_LATEST_TVSERVIES = "https://api.themoviedb.org/3/tv/latest?api_key="+ MainActivity.myKey +"&language=en-US";
+    public static String GET_RECOMMENDIATION_TVSERVIES = "https://api.themoviedb.org/3/tv/{tv_id}/recommendations?api_key="+ MainActivity.myKey +"&language=en-US";
+    public static String GET_LATEST_TV_SERIES = "https://api.themoviedb.org/3/tv/latest?api_key="+MainActivity.myKey+"&language=en-US";
     public static String SEARCH_TVSERIES = "https://api.themoviedb.org/3/search/tv?api_key="+ MainActivity.myKey +"&language=en-US&query=Power%20Ranger&page=1";
 
     //Get Trending
     public static  String GET_TRENDING_ALL = "https://api.themoviedb.org/3/trending/movie/week?api_key="+MainActivity.myKey+"";
-
-
 }

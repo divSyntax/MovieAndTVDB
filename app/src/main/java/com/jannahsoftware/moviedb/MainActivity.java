@@ -81,8 +81,6 @@ public class MainActivity extends AppCompatActivity
         Conts.requestQueue = Volley.newRequestQueue(this);
         progressBar = findViewById(R.id.bar);
 
-
-
         movieDBJSON.GetAllPopularMovies();
 
         //movieDBJSON.GetUpcomingMovies();
@@ -185,8 +183,8 @@ public class MainActivity extends AppCompatActivity
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
 
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.top_nav, menu);
+//        MenuInflater inflater = getMenuInflater();
+//        inflater.inflate(R.menu.top_nav, menu);
         return true;
     }
 

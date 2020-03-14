@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.jannahsoftware.Adapters.LatestTVSeriesAdapter;
 import com.jannahsoftware.Adapters.PopularTVAdapter;
 import com.jannahsoftware.Model.TVSeries;
 import com.jannahsoftware.json.TVSeriesDBJSON;
@@ -37,9 +38,8 @@ public class LatestTVSeries extends AppCompatActivity
         setContentView(R.layout.activity_latest_tvseries);
 
         setTitle("Latest TV Shows");
-        setContentView(R.layout.activity_popular_tvshows);
 
-        tvSeriesDBJSON.GetAllPopularTVSeries();
+        tvSeriesDBJSON.GetLatestTVSeries();
 
         SetRecyclerVars();
         BottomNav();
@@ -48,9 +48,9 @@ public class LatestTVSeries extends AppCompatActivity
     private void SetRecyclerVars()
     {
         snapHelper = new PagerSnapHelper();
-        recyclerView = findViewById(R.id.pop_tv_rec);
+        recyclerView = findViewById(R.id.latest_tv_series_rec);
         tvSeriesList = new ArrayList<>();
-        adapter = new PopularTVAdapter(tvSeriesList, this);
+        adapter = new LatestTVSeriesAdapter(tvSeriesList, this);
 
         linearLayoutManager = new LinearLayoutManager(this);
         linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
